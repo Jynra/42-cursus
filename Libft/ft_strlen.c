@@ -6,11 +6,13 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:33:28 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/01 14:52:58 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/07 15:43:02 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 

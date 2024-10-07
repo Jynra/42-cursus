@@ -6,13 +6,15 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:35:40 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/01 16:45:32 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/07 15:43:51 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(unsigned char c)
+#include "libft.h"
+
+int	ft_isascii(int c)
 {
-	if (c >= 0 || c <= 177)
+	if (c >= 0 && c <= 177)
 		return (1);
 	return (0);
 }

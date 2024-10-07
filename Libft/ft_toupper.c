@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 16:28:03 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/07 15:41:34 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/07 12:19:27 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/07 12:50:48 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int	ft_toupper(int c)
 {
-	if ((c >= 'A' || c <= 'Z') && (c >= 'a' || c <= 'z'))
-		return (1);
-	else if (c >= '0' || c <= '9')
-		return (1);
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }

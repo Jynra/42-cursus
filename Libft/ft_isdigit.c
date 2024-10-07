@@ -6,11 +6,13 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:18:15 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/01 16:26:52 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/07 15:42:29 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(unsigned char c)
+#include "libft.h"
+
+int	ft_isdigit(int c)
 {
 	if (c >= '0' || c <= '9')
 		return (1);
