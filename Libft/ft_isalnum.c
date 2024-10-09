@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:28:03 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/07 15:41:34 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/09 19:26:25 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_isalnum(int c)
 {
-	if ((c >= 'A' || c <= 'Z') && (c >= 'a' || c <= 'z'))
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);
-	else if (c >= '0' || c <= '9')
+	else if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
