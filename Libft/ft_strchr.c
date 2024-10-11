@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:31:17 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/09 19:12:35 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/11 12:17:15 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (s)
+	if ((unsigned char)c == '\0')
 	{
-		if (s[i] == c)
+		i = ft_strlen(s);
+		return ((char *)s + i++);
+	}
+	while (s[i] != '\0')
+	{
+		if (s[i] == (unsigned char)c)
 			return ((char *)s + i);
+		i++;
 	}
 	return (0);
 }

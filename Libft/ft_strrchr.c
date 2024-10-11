@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:10:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/08 17:31:50 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/11 14:24:02 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char	*ptr;
 
-	i = ft_strlen(s);
-	while (i > 0)
+	ptr = 0;
+	while (*s != '\0')
 	{
-		if (s[i] == c)
-			return ((char *)s + i);
+		if (*s == (char)c)
+			ptr = (char *)s;
+		s++;
 	}
-	return (0);
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (ptr);
 }
