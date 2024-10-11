@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:43:12 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/08 16:09:20 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/11 16:02:26 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		dstlen++;
 	}
 	j = dstlen;
-	while (i < dstsize - dstlen - 1 && src)
+	while (i < (dstsize - dstlen - 1) && src[i])
 	{
 		dst[j + 1] = src[i];
 		i++;
