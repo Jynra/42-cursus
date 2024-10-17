@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:53:43 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/15 11:59:44 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/17 00:27:54 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	ft_atoi(const char *str)
 	{
 		res = res * 10 + str[i] - '0';
 		i++;
-	}	
+	}
 	return (res * j);
 }
