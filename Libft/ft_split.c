@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:15:06 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/25 01:09:15 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/25 01:15:42 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	while (*s)
 	{
-		while(*s == c && *s)
+		while (*s == c && *s)
 			s++;
 		if (*s)
 		{
