@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 10:00:59 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/25 12:11:28 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/25 13:21:33 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/25 13:25:55 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
-	write (fd, &c, 1);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(fd, &str[i], 1);
+		i++;
+	}
 }
