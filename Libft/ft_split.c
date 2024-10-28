@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:15:06 by ellucas           #+#    #+#             */
-/*   Updated: 2024/10/25 01:15:42 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/10/28 16:39:25 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,29 @@ static size_t	countword(const char *s, char c)
 	return (count);
 }
 
+char	**freeall(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (0);
+}
+
+size_t	ft_deg(const char *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	if (!ft_strchr(s, c))
+		len = ft_strlen(s);
+	else
+		len = ft_strchr(s, c) - s;
+	return (len);
+}
+
 char	**ft_split(const char *s, char c)
 {
 	int		i;
@@ -47,11 +70,10 @@ char	**ft_split(const char *s, char c)
 			s++;
 		if (*s)
 		{
-			if (!ft_strchr(s, c))
-				len = ft_strlen(s);
-			else
-				len = ft_strchr(s, c) - s;
-			strs[i++] = ft_substr(s, 0, len);
+			len = ft_deg(s, c);
+			strs[i] = ft_substr(s, 0, len);
+			if (!strs[i++])
+				return (freeall(strs));
 			s += len;
 		}
 	}
