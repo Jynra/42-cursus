@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/07 15:57:58 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/01 16:52:49 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/07 15:39:42 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int check_type(const char *input, void *arg)
+void	*ft_memset(void *str, int c, size_t len)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	if (*input == 'c')
-		i += putchar();
-}
-
-int	ft_printf(const char *input, ...)
-{
-
+	ptr = (unsigned char *)str;
+	while (i < len)
+	{
+		ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (str);
 }

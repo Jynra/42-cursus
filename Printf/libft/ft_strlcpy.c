@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/07 15:57:58 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/08 15:08:58 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/11 16:01:00 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int check_type(const char *input, void *arg)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (*input == 'c')
-		i += putchar();
-}
-
-int	ft_printf(const char *input, ...)
-{
-
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	while (i < (dstsize - 1) && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

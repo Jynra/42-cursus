@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/07 15:57:58 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/08 15:43:12 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/14 13:24:56 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int check_type(const char *input, void *arg)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	i;
+	size_t	srclen;
+	size_t	dstlen;
 
 	i = 0;
-	if (*input == 'c')
-		i += putchar();
-}
-
-int	ft_printf(const char *input, ...)
-{
-
+	srclen = ft_strlen(src);
+	dstlen = ft_strlen(dst);
+	if (dstsize == 0)
+		return (dstsize + srclen);
+	while ((i + dstlen < dstsize - 1) && src[i])
+	{
+		dst[dstlen + i] = src[i];
+		i++;
+	}
+	dst[dstlen + i] = '\0';
+	if (dstlen < dstsize)
+		return (dstlen + srclen);
+	return (dstsize + srclen);
 }

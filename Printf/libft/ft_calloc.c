@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/07 15:57:58 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/15 12:01:43 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/15 13:36:08 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int check_type(const char *input, void *arg)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	i;
+	void	*ptr;
 
-	i = 0;
-	if (*input == 'c')
-		i += putchar();
-}
-
-int	ft_printf(const char *input, ...)
-{
-
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }

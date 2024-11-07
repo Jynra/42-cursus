@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/07 15:57:58 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/10/25 11:31:47 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/25 11:45:29 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int check_type(const char *input, void *arg)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	if (*input == 'c')
-		i += putchar();
-}
-
-int	ft_printf(const char *input, ...)
-{
-
+	while (s[i] != '\0')
+	{
+		f(i, s + i);
+		i++;
+	}
 }
