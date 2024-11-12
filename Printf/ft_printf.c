@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/12 14:56:53 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/12 23:27:30 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int check_type(const char *input, void *args)
 
 	i = 0;
 	if (*input == 'c')
-		i += ft_putchar((char)input);
+		i += ft_putchar(args);
 	elseif (*input == 's')
-		i += ft_putstr();
+		i += ft_putstr((char*)args);
 	elseif (*input == 'p')
 		i += ft_putvoid();
 	elseif (*input == 'd')
@@ -48,6 +48,11 @@ int	ft_printf(const char *input, ...)
 	i = 0;
 	while (input[i] != '\0')
 	{
-		check_type(input, args);
+		if (input[i] == '%')
+		{
+			i++;
+			check_type(input, args);
+		}
+		write(1, input[i], 1);
 	}
 }
