@@ -6,12 +6,11 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/12 23:27:30 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/13 17:07:24 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 
 int check_type(const char *input, void *args)
 {
@@ -19,23 +18,25 @@ int check_type(const char *input, void *args)
 
 	i = 0;
 	if (*input == 'c')
-		i += ft_putchar(args);
-	elseif (*input == 's')
+		i += ft_putchar((int)args);
+		/*
+	else if (*input == 's')
 		i += ft_putstr((char*)args);
-	elseif (*input == 'p')
+	else if (*input == 'p')
 		i += ft_putvoid();
-	elseif (*input == 'd')
+	else if (*input == 'd')
 		i += ft_putdec();
-	elseif (*input == 'i')
+	else if (*input == 'i')
 		i += ft_putint();
-	elseif (*input == 'u')
+	else if (*input == 'u')
 		i += ft_put_unsigned_dec();
-	elseif (*input == 'x')
+	else if (*input == 'x')
 		i += ft_putnbr_lowercase();
-	elseif (*input == 'X')
+	else if (*input == 'X')
 		i += ft_putnbr_uppercase();
-	elseif (*input == '%')
+	else if (*input == '%')
 		i += ft_put_percent();
+	*/
 }
 
 int	ft_printf(const char *input, ...)
@@ -54,5 +55,11 @@ int	ft_printf(const char *input, ...)
 			check_type(input, args);
 		}
 		write(1, input[i], 1);
+		i++;
 	}
+}
+
+int	main(int ac, char *av[])
+{
+	ft_printf("result is: %c\n", av[1]);
 }
