@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:58:51 by ellucas           #+#    #+#             */
-/*   Updated: 2024/09/02 16:03:01 by ellucas          ###   ########.fr       */
+/*   Created: 2024/08/21 10:56:37 by ellucas           #+#    #+#             */
+/*   Updated: 2024/11/14 17:15:21 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_printchar(char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
+	write(1, &c, 1);
+	return (1);
 }
 /*
 int	main(void)
 {
-	char	str[] = "Hello World";
-
-	ft_putstr(str);
+	ft_putchar('a');
 }
 */
