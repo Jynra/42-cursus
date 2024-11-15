@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_uprintnbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 16:55:20 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/15 19:06:46 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/11/15 19:04:18 by ellucas           #+#    #+#             */
+/*   Updated: 2024/11/15 19:08:40 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <unistd.h>
+void	ft_putchar( char c)
+{
+	write(1, &c, 1);
+}
 
-int	ft_printf(const char *input, ...);
-int	ft_printchar(char c);
-int	ft_printstr(char *str);
-int	ft_printint(int n);
-int	ft_uprintnbr(unsigned int nb);
+int	ft_uprinttnbr(unsigned int nb)
+{
+	char	c;
+	int		len;
 
-#endif
+	len = 1;
+	if (nb >= 10)
+	{
+		ft_uprinttnbr(nb / 10);
+		len++;
+	}
+	c = (nb % 10) + '0';
+	ft_putchar(c);
+	return (len);
+}
