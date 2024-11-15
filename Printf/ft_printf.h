@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:55:20 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/14 17:59:47 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/15 17:37:43 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #define FT_PRINTF_H
 
 #include <stdarg.h>
-#include "./libft/libft.h"
+#include <stdlib.h>
+#include <stddef.h>
+#include <unistd.h>
 
 int	ft_printf(const char *input, ...);
 int	ft_printchar(char c);

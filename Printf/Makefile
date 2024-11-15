@@ -6,7 +6,7 @@
 #    By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 17:04:25 by ellucas           #+#    #+#              #
-#    Updated: 2024/11/13 17:05:00 by ellucas          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/15 17:35:33 by ellucas          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Werror -Wextra
 LIBFTDIR = ./libft
 
 SRCS = 	ft_printf.c \
-		print_char.c \
+		ft_printchar.c \
 
 OBJS = $(SRCS:.c=.o)
 

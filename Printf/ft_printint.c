@@ -6,14 +6,13 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:58:53 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/14 18:22:10 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/15 17:41:48 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-void	ft_putchar( char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
