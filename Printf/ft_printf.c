@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/16 00:00:04 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/16 15:58:18 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,21 @@ int	check_type(const char *input, va_list args)
 		i += ft_printchar(va_arg(args, int));
 	else if (*input == 's')
 		i += ft_printstr(va_arg(args, char *));
-	//else if (*input == 'p')
-	//	i += ft_putvoid();
+	/*else if (*input == 'p')
+		i += ft_putvoid();
+		*/
 	else if (*input == 'd')
 		i += ft_printint(va_arg(args, int));
 	else if (*input == 'i')
 		i += ft_printint(va_arg(args, int));
-	//else if (*input == 'u')
-	//	i += ft_uprintnbr(va_arg(args, int));
-	//else if (*input == 'x')
-	//	i += ft_putnbr_lowercase();
-	//else if (*input == 'X')
-	//	i += ft_putnbr_uppercase();
+		/*
+	else if (*input == 'u')
+		i += ft_uprintnbr(va_arg(args, int));
+	else if (*input == 'x')
+		i += ft_putnbr_lowercase();
+	else if (*input == 'X')
+		i += ft_putnbr_uppercase();
+		*/
 	else if (*input == '%')
 		i += ft_printchar('%');
 	return (i);
@@ -40,9 +43,9 @@ int	check_type(const char *input, va_list args)
 
 int	ft_printf(const char *input, ...)
 {
-	int	i;
+	int		i;
 	va_list	args;
-	
+
 	i = 0;
 	va_start (args, input);
 	while (*input != '\0')

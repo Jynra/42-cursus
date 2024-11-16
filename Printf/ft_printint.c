@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 17:58:53 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/15 23:52:20 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/16 15:58:47 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ int	ft_printint(int n)
 		return (11);
 	return (i);
 }
-
