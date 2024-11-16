@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:55:20 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/15 19:06:46 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/16 00:00:54 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	ft_printf(const char *input, ...);
 int	ft_printchar(char c);
 int	ft_printstr(char *str);
 int	ft_printint(int n);
-int	ft_uprintnbr(unsigned int nb);
+//int	ft_uprintnbr(unsigned int nb);
 
 #endif
