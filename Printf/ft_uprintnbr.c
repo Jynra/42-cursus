@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:04:18 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/15 23:49:27 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/19 11:59:48 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_uprintnbr(unsigned int nb)
 	int		len;
 
 	len = 1;
-	if (nb >= 10)
+	if (nb > 9)
 	{
 		ft_uprintnbr(nb / 10);
 		len++;
