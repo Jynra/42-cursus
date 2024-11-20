@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/19 11:54:26 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/20 18:49:22 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ int	check_type(const char *input, va_list args)
 		i += ft_printint(va_arg(args, int));
 	else if (*input == 'u')
 		i += ft_uprintnbr(va_arg(args, int));
-		/*
 	else if (*input == 'x')
-		i += ft_putnbr_lowercase();
+		i += ft_printhex_lower(va_arg(args, unsigned int));
 	else if (*input == 'X')
-		i += ft_putnbr_uppercase();
-		*/
+		i += ft_printhex_up(va_arg(args, unsigned int));
 	else if (*input == '%')
 		i += ft_printchar('%');
 	return (i);

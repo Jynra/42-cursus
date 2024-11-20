@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printhex_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:58:51 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/19 12:32:52 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/11/20 17:31:03 by ellucas           #+#    #+#             */
+/*   Updated: 2024/11/20 18:48:06 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_printstr(char *str)
+void	ft_putnbrhex_up(unsigned int nb, int *i)
+{
+	if (nb >= 16)
+		ft_putnbrhex_up(nb / 16, i);
+	ft_printchar("0123456789ABCDEF"[nb % 16]);
+	*i += 1;
+}
+
+int	ft_printhex_up(unsigned int nb)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
+	ft_putnbrhex_up(nb, &i);
 	return (i);
 }
-/*
-int	main(void)
-{
-	char	str[] = "Hello World";
-
-	ft_putstr(str);
-}
-*/

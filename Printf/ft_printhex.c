@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 15:58:51 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/19 12:32:52 by ellucas          ###   LAUSANNE.ch       */
+/*   Created: 2024/11/20 17:20:39 by ellucas           #+#    #+#             */
+/*   Updated: 2024/11/20 17:27:27 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_printstr(char *str)
+int	ft_printhex(unsigned int n)
 {
-	int	i;
+	char	buffer[9];
+	int i;
+	int count;
 
 	i = 0;
-	if (!str)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
-/*
-int	main(void)
-{
-	char	str[] = "Hello World";
+	count = 0;
 
-	ft_putstr(str);
+	if (n == 0)
+	{
+		write(1, "0", 1);
+		return 1;
+	}
+	while (n > 0)
+	{
+		int digit = n % 16;
+		char c;
+		if (digit < 10)
+			c = '0' + digit;
+		else
+			c = 'a' + (digit - 10);
+		buffer[i++] = c;
+		n /= 16;
+	}
+	while (--i >= 0)
+	{
+		write(1, &buffer[i], 1);
+		count++;
+	}
+	return count;
 }
-*/
