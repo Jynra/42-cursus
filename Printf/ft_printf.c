@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 18:34:56 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/21 01:04:00 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/21 14:59:38 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_type(const char *input, va_list args)
 	else if (*input == 's')
 		i += ft_printstr(va_arg(args, char *));
 	else if (*input == 'p')
-		i += ft_printptr(va_arg(args, uintptr_t));
+		i += ft_printptr((uintptr_t)va_arg(args, void *));
 	else if (*input == 'd')
 		i += ft_printint(va_arg(args, int));
 	else if (*input == 'i')
