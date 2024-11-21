@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:55:20 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/20 18:48:33 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/21 01:03:23 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <unistd.h>
+# include <stdint.h>
 
 int	ft_printf(const char *input, ...);
 int	ft_printchar(char c);
 int	ft_printstr(char *str);
+int	ft_printptr(uintptr_t ptr);
 int	ft_printint(int n);
 int	ft_uprintnbr(unsigned int nb);
 int	ft_printhex_lower(unsigned int nb);
