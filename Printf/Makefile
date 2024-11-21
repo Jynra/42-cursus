@@ -6,7 +6,7 @@
 #    By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 17:04:25 by ellucas           #+#    #+#              #
-#    Updated: 2024/11/21 16:47:03 by ellucas          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/21 17:55:32 by ellucas          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 LIBFTNAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-LIBFTDIR = ./libft
+LIBFTDIR = libft
 
 SRCS = 	ft_printf.c \
 		ft_printchar.c ft_printint.c ft_printstr.c ft_uprintnbr.c ft_printhex_lower.c ft_printhex_up.c ft_printptr.c \
