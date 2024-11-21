@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 00:24:02 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/21 17:18:55 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/11/21 18:30:42 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	ft_printptr(uintptr_t ptr)
 	int	i;
 
 	i = 0;
-	if (!ptr || (void *)ptr == 0)
+	if (!ptr || ptr == 0)
 	{
-		write(1, "(nil)", 5);
-		return (5);
+		write(1, "0x0", 3);
+		return (3);
 	}
 	write(1, "0x", 2);
 	i += 2 + hexconv(ptr);
