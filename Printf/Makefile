@@ -6,13 +6,13 @@
 #    By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 17:04:25 by ellucas           #+#    #+#              #
-#    Updated: 2024/11/21 17:55:32 by ellucas          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/21 19:01:55 by ellucas          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 LIBFTNAME = libft.a
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 LIBFTDIR = libft
 
