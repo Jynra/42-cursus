@@ -6,7 +6,7 @@
 #    By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 17:04:25 by ellucas           #+#    #+#              #
-#    Updated: 2024/11/21 19:01:55 by ellucas          ###   LAUSANNE.ch        #
+#    Updated: 2024/11/22 14:39:00 by ellucas          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,19 @@ makelibft:
 	@cp $(LIBFTDIR)/$(LIBFTNAME) .
 	@mv $(LIBFTNAME) $(NAME)
 
-$(NAME): makelibft $(OBJS)
-	@ar -r $(NAME) $(OBJS)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -I. -c $< -o $@
+
+$(NAME): $(OBJS) $(makelibft)
+	ar -rcs $(NAME) $(OBJS)
 
 clean:
-	@rm -f $(OBJS)
+	rm -f $(OBJS)
 	@cd $(LIBFTDIR) && make clean
 	
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 	@cd $(LIBFTDIR) && make fclean
 	
 re: fclean all
