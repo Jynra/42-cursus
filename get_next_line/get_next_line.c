@@ -6,42 +6,91 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/11/26 16:35:51 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/02 16:31:58 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "get_next_line.h"
+#include "get_next_line.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-
-char	get_next_line(int fd)
+char	*extract_line(char *remainder)
 {
-	char buffer[1];
-	ssize_t byte;
+	int		i;
+	char	*line;
 
-	byte = read(fd, buffer, 1);
-	if (byte == 1)
-		return (buffer[0]);
-	return (-1);
+	i = 0;
+	while (remainder[i] != '\n' && remainder[i] != '\0')
+		i++;
+	if (remainder[i] == '\n')
+	{
+		line = malloc(i + 2);
+		if (!line)
+			return (NULL);
+		ft_strncpy(line, remainder, i + 1);
+		line[i++] = '\0';
+	}
+	else
+	{
+		line = malloc(i + 1);
+		if (!line)
+			return (NULL);
+		ft_strncpy(line, remainder, i);
+		line[i] = '\0';
+	}
+	return (line);
 }
-
-int	main()
+char	*remainder_update(char *remainder)
 {
-	int		fd;
-	char	c;
+	int		i;
+	char	*new_remainder;
 
-	fd = open("text.txt", O_RDONLY);
-	if (fd == -1)
+	i = 0;
+	while (remainder[i] != '\n' && remainder[i] != '\0')
+		i++;
+	if (!remainder)
 	{
-		write(2, "Error", 5);
-		return (1);
+		free(remainder);
+		return (NULL);
 	}
-	while (c != -1)
+	new_remainder = ft_strdup(remainder + i + 1);
+	if (!new_remainder)
 	{
-		write (1, &c, 1);
-		c = get_next_line(fd);
+		free(remainder);
+		return (NULL);
 	}
-	close(fd);
-	return (0);
+	free(remainder);
+	return (new_remainder);
+}
+char	*get_next_line(int fd)
+{
+	static char	*remainder;
+	char		*buffer;
+	char		*line;
+	int			bytes_read;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	bytes_read = 1;
+	while (!ft_strchr(remainder,'\n') && bytes_read > 0)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[bytes_read] = '\0';
+		remainder = ft_strjoin(remainder, buffer);
+		if (!remainder)
+		{
+			free(buffer);
+			return (NULL);
+		}
+	}
+	free(buffer);
+	line = extract_line(remainder);
+	remainder = remainder_update(remainder);
+	return (line);
 }
