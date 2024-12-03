@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 14:32:08 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 15:34:44 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ char	*remainder_update(char *remainder)
 
 	if (!remainder)
 		return (NULL);
+
+	// Trouver la fin de la ligne
 	i = 0;
 	while (remainder[i] != '\n' && remainder[i] != '\0')
 		i++;
+
+	// Pas de reste à mettre à jour
 	if (remainder[i] == '\0')
 	{
-		free(remainder);
 		return (NULL);
 	}
+
+	// Créer un nouveau reste
 	new_remainder = ft_strdup(remainder + i + 1);
-	if (!new_remainder)
-	{
-		free(remainder);
-		return (NULL);
-	}
-	free(remainder);
+
 	return (new_remainder);
 }
 
@@ -101,25 +101,34 @@ static char	*read_and_store(int fd, char *remainder)
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder;
+	static char	*remainder = NULL;
 	char		*line;
 
+	// Cas spécial pour libérer `remainder` à la fin
+	if (fd == -1)
+	{
+		if (remainder)
+		{
+			remainder = NULL;
+		}
+		return (NULL);
+	}
+
+	// Vérifications initiales
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+
+	// Lecture et stockage
 	remainder = read_and_store(fd, remainder);
 	if (!remainder || *remainder == '\0')
 	{
-		free(remainder);
 		remainder = NULL;
 		return (NULL);
 	}
+
+	// Extraction de la ligne et mise à jour du remainder
 	line = extract_line(remainder);
-	if (!line)
-	{
-		free(remainder);
-		remainder = NULL;
-		return (NULL);
-	}
 	remainder = remainder_update(remainder);
+
 	return (line);
 }
