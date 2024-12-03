@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 12:48:35 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 13:14:05 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,14 @@ static char	*read_and_store(int fd, char *remainder)
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(remainder, '\n') && (bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+	while ((!remainder || !ft_strchr(remainder, '\n')) && bytes_read > 0)
 	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
+		{
+			free(buffer);
+			return (NULL);
+		}
 		buffer[bytes_read] = '\0';
 		temp = remainder;
 		remainder = ft_strjoin(remainder, buffer);
@@ -82,8 +88,6 @@ static char	*read_and_store(int fd, char *remainder)
 		free(temp);
 	}
 	free(buffer);
-	if (bytes_read < 0)
-		return (NULL);
 	return (remainder);
 }
 
