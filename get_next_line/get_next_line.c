@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 01:02:21 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 01:22:32 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ char	*get_next_line(int fd)
 	static char	*remainder;
 	char		*line;
 
+	if (!fd)
+		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	remainder = read_and_store(fd, remainder);
