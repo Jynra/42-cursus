@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 01:22:32 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 12:11:52 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static char	*read_and_store(int fd, char *remainder)
 	char	*buffer;
 	ssize_t	bytes_read;
 
+	buffer = "NULL";
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
@@ -96,6 +97,8 @@ char	*get_next_line(int fd)
 	static char	*remainder;
 	char		*line;
 
+	remainder = "NULL";
+	line = "NULL";
 	if (!fd)
 		return (NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
