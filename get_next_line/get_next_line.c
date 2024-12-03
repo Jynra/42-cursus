@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 13:14:05 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 14:32:08 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ char	*remainder_update(char *remainder)
 		return (NULL);
 	}
 	new_remainder = ft_strdup(remainder + i + 1);
+	if (!new_remainder)
+	{
+		free(remainder);
+		return (NULL);
+	}
 	free(remainder);
 	return (new_remainder);
 }
@@ -68,6 +73,8 @@ static char	*read_and_store(int fd, char *remainder)
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
+	buffer[0] = '\0';
+	bytes_read = 1;
 	while ((!remainder || !ft_strchr(remainder, '\n')) && bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -76,6 +83,8 @@ static char	*read_and_store(int fd, char *remainder)
 			free(buffer);
 			return (NULL);
 		}
+		if (bytes_read == 0)
+			break;
 		buffer[bytes_read] = '\0';
 		temp = remainder;
 		remainder = ft_strjoin(remainder, buffer);
@@ -85,7 +94,6 @@ static char	*read_and_store(int fd, char *remainder)
 			free(temp);
 			return (NULL);
 		}
-		free(temp);
 	}
 	free(buffer);
 	return (remainder);
@@ -99,9 +107,19 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	remainder = read_and_store(fd, remainder);
-	if (!remainder)
+	if (!remainder || *remainder == '\0')
+	{
+		free(remainder);
+		remainder = NULL;
 		return (NULL);
+	}
 	line = extract_line(remainder);
+	if (!line)
+	{
+		free(remainder);
+		remainder = NULL;
+		return (NULL);
+	}
 	remainder = remainder_update(remainder);
 	return (line);
 }

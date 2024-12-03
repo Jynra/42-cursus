@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:15:37 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 12:35:32 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 14:35:10 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,19 @@ char	*ft_strdup(const char *s1)
 	int		l;
 	int		i;
 
-	i = 0;
+	if (!s1)
+		return (NULL);
 	l = ft_strlen(s1) + 1;
 	copy = malloc(l * sizeof(char));
 	if (!copy)
 		return (0);
+	i = 0;
 	while (s1[i])
 	{
 		copy[i] = s1[i];
 		i++;
 	}
-	copy[i] = 0;
+	copy[i] = '\0';
 	return (copy);
 }
 
@@ -84,18 +86,17 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	if ((unsigned char)c == '\0')
-	{
-		i = ft_strlen(s);
-		return ((char *)s + i++);
-	}
 	while (s[i] != '\0')
 	{
 		if (s[i] == (unsigned char)c)
 			return ((char *)s + i);
 		i++;
 	}
-	return (0);
+	if ((unsigned char)c == '\0')
+	{
+		return ((char *)s + i);
+	}
+	return (NULL);
 }
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
