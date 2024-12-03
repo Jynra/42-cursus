@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 19:18:09 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/02 18:43:03 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 01:02:21 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*extract_line(char *remainder)
 	}
 	return (line);
 }
+
 char	*remainder_update(char *remainder)
 {
 	int		i;
@@ -60,20 +61,17 @@ char	*remainder_update(char *remainder)
 	free(remainder);
 	return (new_remainder);
 }
-char	*get_next_line(int fd)
-{
-	static char	*remainder;
-	char		*buffer;
-	char		*line;
-	int			bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+static char	*read_and_store(int fd, char *remainder)
+{
+	char	*buffer;
+	ssize_t	bytes_read;
+
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(remainder,'\n') && bytes_read > 0)
+	while (!ft_strchr(remainder, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
@@ -90,6 +88,19 @@ char	*get_next_line(int fd)
 		}
 	}
 	free(buffer);
+	return (remainder);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*remainder;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	remainder = read_and_store(fd, remainder);
+	if (!remainder)
+		return (NULL);
 	line = extract_line(remainder);
 	remainder = remainder_update(remainder);
 	return (line);

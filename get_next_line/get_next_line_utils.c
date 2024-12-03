@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:15:37 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/02 15:36:20 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 01:03:28 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		i++;
 	}
 	return (i);
 }
+
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*str;
@@ -51,6 +52,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	return (0);
 }
+
 char	*ft_strdup(const char *s1)
 {
 	char	*copy;
@@ -70,6 +72,7 @@ char	*ft_strdup(const char *s1)
 	copy[i] = 0;
 	return (copy);
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
@@ -88,6 +91,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
+
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int	i;
