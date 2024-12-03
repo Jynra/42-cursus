@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:15:37 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/03 01:13:51 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/03 12:35:32 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	i;
 	size_t	j;
 
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
 	if (s1 && s2)
 	{
 		size = ft_strlen(s1) + ft_strlen(s2);
