@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 13:18:19 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/06 13:46:29 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/06 14:45:54 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	join = malloc((len1 + len2) * sizeof(char));
+	join = malloc((len1 + len2 + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
 	i = 0;
@@ -91,19 +91,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*found;
-
-	found = NULL;
 	while (*s)
 	{
 		if (*s == (char)c)
-		{
-			found = (char *)s;
-			break ;
-		}
+			return ((char *)s);
 		s++;
 	}
 	if (c == '\0')
 		return ((char *)s);
-	return (found);
+	return (NULL);
 }

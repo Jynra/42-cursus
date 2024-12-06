@@ -6,7 +6,7 @@
 /*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 12:39:00 by ellucas           #+#    #+#             */
-/*   Updated: 2024/12/06 13:17:54 by ellucas          ###   LAUSANNE.ch       */
+/*   Updated: 2024/12/06 15:00:31 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static char	*extract_line(char **storage)
 	size_t	i;
 
 	i = 0;
-	while (*storage[i] && *storage[i] != '\n')
+	while ((*storage)[i] && (*storage)[i] != '\n')
 		i++;
-	if (*storage[i] == '\n')
+	if ((*storage)[i] == '\n')
 		line = ft_substr(*storage, 0, i + 1);
 	else
 		line = ft_substr(*storage, 0, i);
-	temp = ft_strdup(&(*storage[i + (*storage[i] == '\n')]));
+	temp = ft_strdup(&((*storage)[i + ((*storage)[i] == '\n')]));
 	free(*storage);
 	*storage = temp;
 	return (line);
@@ -48,9 +48,7 @@ static int	read_and_store(int fd, char **storage)
 		free(*storage);
 		*storage = temp;
 		if (ft_strchr(*storage, '\n'))
-		{
 			break ;
-		}
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	free(buffer);
