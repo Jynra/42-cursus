@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/14 17:20:25 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:00:40 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ int	main(void)
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return (1);
-	data.win = mlx_new_window(data.mlx, 800, 600, "la fenetre du jeu");
+	data.win = mlx_new_window(data.mlx, LENGTH, WIDTH, "la fenetre du jeu");
 	if (data.win == NULL)
 		return (2);
+	data.player_img = mlx_xpm_file_to_image(data.mlx, "resources/player.xpm", &data.player_width, &data.player_height);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_hook(data.win, 2, 1L<<0, handle_keypress, &data);
 	mlx_loop(data.mlx);

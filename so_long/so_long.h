@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/14 17:16:02 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:00:39 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+/* Resolution */
+# define LENGTH			1280
+# define WIDTH			720
+
+/* Keybind */
 # define KEY_W          119
 # define KEY_A          97
 # define KEY_S          115
@@ -34,6 +39,7 @@ typedef struct s_data
 	void	*win;
 	int		pos_x;
 	int		pos_y;
+	void	*player_img;
 }				t_data;
 
 #endif
