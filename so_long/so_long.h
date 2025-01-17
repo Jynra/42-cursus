@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/16 17:00:39 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/17 17:18:55 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ typedef struct s_data
 	int		pos_x;
 	int		pos_y;
 	void	*player_img;
+	int		player_width;
+	int		player_height;
 }				t_data;
+
+int	close_window(t_data *data);
+void	render(t_data *data);
 
 #endif
