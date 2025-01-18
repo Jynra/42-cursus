@@ -6,7 +6,7 @@
 #    By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:35:27 by ellucas           #+#    #+#              #
-#    Updated: 2025/01/14 15:14:21 by ellucas          ###   ########.fr        #
+#    Updated: 2025/01/18 13:34:13 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MLX_PATH = minilibx-linux
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext
 
-SRC = main.c
+SRC = so_long.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
