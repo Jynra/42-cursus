@@ -24,13 +24,25 @@ int	close_window(t_data *data)
 int	handle_keypress(int keycode, t_data *data)
 {
 	if (keycode == KEY_W || keycode == KEY_UP)
-		data->pos_y -= 5;
+	{
+		if (data->pos_y - 10 >= 0)
+			data->pos_y -= 10;
+	}
 	if (keycode == KEY_S || keycode == KEY_DOWN)
-		data->pos_y += 5;
+	{
+		if (data->pos_y + 10 + data->player_height <= WIDTH)
+			data->pos_y += 10;
+	}
 	if (keycode == KEY_A || keycode == KEY_LEFT)
-		data->pos_x -= 5;
+	{
+		if (data->pos_x - 10 >= 0)
+			data->pos_x -= 10;
+	}
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
-		data->pos_x += 5;
+	{
+		if (data->pos_x + 10 + data->player_width <= LENGTH)
+			data->pos_x += 10;
+	}
 	if (keycode == KEY_ESC)
 		close_window(data);
 	render(data);
