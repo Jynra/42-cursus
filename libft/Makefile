@@ -18,7 +18,7 @@ PRINTF_SRCS = \
     ft_printf.c ft_printchar.c ft_printint.c ft_printstr.c \
     ft_uprintnbr.c ft_printhex_lower.c ft_printhex_up.c ft_printptr.c
 
-GNL_SRC = \
+GNL_SRCS = \
 	get_next_line.c
 
 SOURCES = \
