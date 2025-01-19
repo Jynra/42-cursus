@@ -61,6 +61,11 @@ int	main(void)
 {
 	t_data	data;
 
+	if (!read_map("maps/map.ber"))
+	{
+		ft_printf("Error\nCannot read map file\n");
+		return (1);
+	}
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return (1);

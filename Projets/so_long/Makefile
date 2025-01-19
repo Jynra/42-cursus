@@ -13,23 +13,28 @@
 NAME = so_long
 
 MLX_PATH = minilibx-linux
+LIBFT_PATH = libft
+LIBFT = $(LIBFT_PATH)/libft.a
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext
 
-SRC = so_long.c
+SRC = so_long.c parsing.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -I$(MLX_PATH) $(MLX_FLAGS) -o $(NAME)
+	make -C $(LIBFT_PATH)
+	$(CC) $(OBJ) -I$(MLX_PATH) -I$(LIBFT_PATH) $(MLX_FLAGS) -L$(LIBFT_PATH) -lft -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_PATH) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(MLX_PATH)$(LIBFT_PATH) -c $< -o $@
 clean:
+	make -C $(LIBFT_PATH) clean
 	rm -f $(OBJ)
 
 fclean: clean
+	make -C $(LIBFT_PATH) fclean
 	rm -f $(NAME)
 
 re: fclean all
