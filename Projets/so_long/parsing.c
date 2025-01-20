@@ -43,3 +43,29 @@ int	map_size(char *path, t_data *data)
 	close(fd);
 	return (1);
 }
+int	allocate_map(t_data *data)
+{
+	int	i;
+
+	data->map = malloc(sizeof(char *) * (data->map_height + 1));
+	if (!data->map)
+		return (0);
+	i = 0;
+	while (i < data->map_height)
+	{
+		data->map[i] = malloc(sizeof(char) * (data->map_width + 1));
+		if (!data->map[i])
+		{
+			while (i > 0)
+			{
+				i--;
+				free(data->map[i]);
+			}
+			free(data->map);
+			return (0);
+		}
+		i++;
+	}
+	data->map[data->map_height] = NULL;
+	return (1);
+}
