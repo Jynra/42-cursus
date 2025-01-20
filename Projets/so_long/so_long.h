@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/20 15:00:48 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:42:54 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ typedef struct s_data
 int	close_window(t_data *data);
 void	render(t_data *data);
 int	read_map(char *path);
+int	map_size(char *path, t_data *data);
 
 #endif

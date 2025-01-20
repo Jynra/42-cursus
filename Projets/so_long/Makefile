@@ -6,7 +6,7 @@
 #    By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:35:27 by ellucas           #+#    #+#              #
-#    Updated: 2025/01/18 13:34:13 by ellucas          ###   ########.fr        #
+#    Updated: 2025/01/20 17:42:55 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext
 
-SRC = so_long.c parsing.c
+SRC = so_long.c render.c parsing.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

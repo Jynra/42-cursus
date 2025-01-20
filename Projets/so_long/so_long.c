@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/20 15:54:58 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:51:13 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,6 @@ int	handle_keypress(int keycode, t_data *data)
 	render(data);
 	ft_printf("Position : x = %d, y = %d\n", data->pos_x, data->pos_y);
 	return (0);
-}
-
-void	render(t_data *data)
-{
-	mlx_clear_window(data->mlx, data->win);
-	mlx_put_image_to_window(data->mlx, data->win, data->player_img, data->pos_x, data->pos_y);
 }
 
 int	main(void)
