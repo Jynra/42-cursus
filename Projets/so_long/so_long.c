@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/20 17:51:13 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/21 17:33:22 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	handle_keypress(int keycode, t_data *data)
 	}
 	if (keycode == KEY_S || keycode == KEY_DOWN)
 	{
-		if (data->pos_y + 10 + data->player_height <= WIDTH)
+		if (data->pos_y + 10 + data->assets_height <= WIDTH)
 			data->pos_y += 10;
 	}
 	if (keycode == KEY_A || keycode == KEY_LEFT)
@@ -40,7 +40,7 @@ int	handle_keypress(int keycode, t_data *data)
 	}
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
 	{
-		if (data->pos_x + 10 + data->player_width <= LENGTH)
+		if (data->pos_x + 10 + data->assets_width <= LENGTH)
 			data->pos_x += 10;
 	}
 	if (keycode == KEY_ESC)
@@ -50,24 +50,40 @@ int	handle_keypress(int keycode, t_data *data)
 	return (0);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
+	(void)	ac;
 	t_data	data;
 
-	if (!read_map("maps/map.ber"))
+/* tests de bon fonctionnement */
+	if (!read_map(av[1],&data))
 	{
 		ft_printf("Error\nCannot read map file\n");
 		return (1);
 	}
+	check_map(&data);
+	ft_printf("\nmap dimensions : L= %d , H= %d\n", data.map_width, data.map_height);
+	if (data.map)
+		ft_printf("Allocation de la map reussi\n");
+	else
+		ft_printf("Allocation de la map echoue\n");
+
+/* debut du main */
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
 		return (1);
-	data.win = mlx_new_window(data.mlx, LENGTH, WIDTH, "so_long");
+	data.win = mlx_new_window(data.mlx, data.map_width * SPRITE_SIZE, data.map_height * SPRITE_SIZE, "so_long");
 	if (data.win == NULL)
 		return (2);
-	data.player_img = mlx_xpm_file_to_image(data.mlx, "resources/player.xpm", &data.player_width, &data.player_height);
+	data.player_img = mlx_xpm_file_to_image(data.mlx, "resources/player.xpm", &data.assets_width, &data.assets_height);
 	if (data.player_img == NULL)
 		return (3);
+	data.floor_img = mlx_xpm_file_to_image(data.mlx, "resources/floor.xpm", &data.assets_width, &data.assets_height);
+	if (data.floor_img == NULL)
+		return (1);
+	data.wall_img = mlx_xpm_file_to_image(data.mlx, "resources/wall.xpm", &data.assets_width, &data.assets_height);
+	if (data.wall_img == NULL)
+		return (1);
 	data.pos_x = 900;
 	data.pos_y = 200;
 	render(&data);

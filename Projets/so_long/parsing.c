@@ -1,22 +1,29 @@
 #include "so_long.h"
 
-int	read_map(char *path)
+int	read_map(char *path, t_data *data)
 {
 	int		fd;
 	char	*line;
-	t_data	data;
+	int		i;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (0);
+	if (!map_size(path, data))
+		return (0);
+	if (!allocate_map(data))
+		return (0);
+	i = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_printf("%s", line);
+		ft_strlcpy(data->map[i],line,data->map_width + 1);
+		//ft_printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
-	map_size("maps/map.ber", &data); //Recupere les 
+	//map_size(path, data); //Recupere les dimensions de la map
 	close(fd);
 	return (1);
 }
@@ -39,10 +46,11 @@ int	map_size(char *path, t_data *data)
 		free(line);
 		line = get_next_line(fd);
 	}
-	ft_printf("\nhauteur de la carte = %d, largeur de la carte = %d\n", data->map_height, data->map_width);
+	//ft_printf("\nhauteur de la carte = %d, largeur de la carte = %d\n", data->map_height, data->map_width);
 	close(fd);
 	return (1);
 }
+
 int	allocate_map(t_data *data)
 {
 	int	i;

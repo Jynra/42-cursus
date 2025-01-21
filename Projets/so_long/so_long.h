@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/20 17:42:54 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/21 17:24:46 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define LENGTH			1280
 # define WIDTH			720
 
+/* Sprites infod=s */
+# define SPRITE_SIZE	80
+
 /* Keybind */
 # define KEY_W			119
 # define KEY_A			97
@@ -35,6 +38,9 @@
 # define KEY_RIGHT		65363
 # define KEY_ESC		65307
 
+/* Map file */
+//# define MAP			"maps/wrong_map.ber"
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -44,8 +50,8 @@ typedef struct s_data
 	void	*floor_img;
 	int		pos_x;
 	int		pos_y;
-	int		player_width;
-	int		player_height;
+	int		assets_width;
+	int		assets_height;
 	char	**map;
 	int		map_width;
 	int		map_height;
@@ -54,7 +60,9 @@ typedef struct s_data
 
 int	close_window(t_data *data);
 void	render(t_data *data);
-int	read_map(char *path);
+int	read_map(char *path, t_data *data);
 int	map_size(char *path, t_data *data);
+int	allocate_map(t_data *data);
+void	check_map(t_data *data);
 
 #endif
