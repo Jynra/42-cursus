@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/21 17:24:46 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/21 20:49:28 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 	void	*player_img;
 	void	*wall_img;
 	void	*floor_img;
+	void	*collect_img;
 	int		pos_x;
 	int		pos_y;
 	int		assets_width;
@@ -64,5 +65,6 @@ int	read_map(char *path, t_data *data);
 int	map_size(char *path, t_data *data);
 int	allocate_map(t_data *data);
 void	check_map(t_data *data);
+int	handle_keypress(int keycode, t_data *data);
 
 #endif
