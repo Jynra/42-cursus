@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/21 20:49:28 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/22 11:26:18 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <fcntl.h>
 
 /* Resolution */
-# define LENGTH			1280
-# define WIDTH			720
+//# define LENGTH			1280
+//# define WIDTH			720
 
 /* Sprites infod=s */
 # define SPRITE_SIZE	80
