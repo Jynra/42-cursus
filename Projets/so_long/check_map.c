@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/23 20:26:20 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/23 21:05:36 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,28 @@ void	check_map(t_data *data)
 
 void	check_elements(int player, int out, t_data *data)
 {
+	int	i;
+	int	j;
+
 	if (player != 1 || out != 1 || data->collectibles == 0)
 	{
 		ft_printf("Error : Invalid map elements\n");
 		exit(1);
+	}
+	i = 0;
+	while (i < data->map_height)
+	{
+		j = 0;
+		while (j < data->map_width)
+		{
+			if (!ft_strchr("01PEC", data->map[i][j]))
+			{
+				ft_printf("Error : Caractere non valide\n");
+				exit(1);
+			}
+			j++;
+		}
+		i++;
 	}
 }
 
