@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:57:58 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/22 19:03:19 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:24:51 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	handle_keypress(int keycode, t_data *data)
 	if (keycode == KEY_ESC)
 		close_window(data);
 	render(data);
-	ft_printf("Touche = %d  Position : x = %d, y = %d\n", keycode, data->pos_x, data->pos_y);
+	//ft_printf("Touche = %d  Position : x = %d, y = %d\n", keycode, data->pos_x, data->pos_y);
 	return (0);
 }
 

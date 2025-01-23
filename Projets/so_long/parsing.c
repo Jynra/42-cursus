@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:17:26 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/22 17:46:51 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/23 15:09:57 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	read_map(char *path, t_data *data)
 	//map_size(path, data); //Recupere les dimensions de la map
 	close(fd);
 	count_collectibles(data);
+	check_map(data);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:17:08 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/22 17:46:50 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:08:25 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	render(t_data *data)
 				mlx_put_image_to_window(data->mlx, data->win, data->floor_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
 			else if (data->map[y][x] == 'C') 
 				mlx_put_image_to_window(data->mlx, data->win, data->collect_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
-			else if (data->map[y][x] == 'E') 
+			else if (data->map[y][x] == 'E' && data->collected != data->collectibles) 
+				mlx_put_image_to_window(data->mlx, data->win, data->exit_close_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+			else if (data->map[y][x] == 'E' && data->collected == data->collectibles)
 				mlx_put_image_to_window(data->mlx, data->win, data->exit_img, x * SPRITE_SIZE, y * SPRITE_SIZE);
 			else if (data->map[y][x] == 'P')
 			{
