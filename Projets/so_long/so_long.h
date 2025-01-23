@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/23 15:18:43 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/23 20:26:24 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,8 @@ void	check_map(t_data *data);
 int	handle_keypress(int keycode, t_data *data);
 void	count_collectibles(t_data *data);
 void	check_elements(int player, int out, t_data *data);
+void	check_walls(t_data *data);
+void	init_textures(t_data *data);
+void	init_mlx(t_data *data);
 
 #endif

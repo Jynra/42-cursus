@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/23 15:19:19 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/23 20:26:20 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	check_map(t_data *data)
 		i++;
 	}
 	check_elements(player, out, data);
+	check_walls(data);
 }
 
 void	check_elements(int player, int out, t_data *data)
@@ -44,5 +45,33 @@ void	check_elements(int player, int out, t_data *data)
 	{
 		ft_printf("Error : Invalid map elements\n");
 		exit(1);
+	}
+}
+
+void	check_walls(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->map_width)
+	{
+		if (data->map[0][i] != '1' ||
+		data->map[data->map_height - 1][i] != '1')
+		{
+			ft_printf("Error : La map doit etre entoure de mur\n");
+			exit(1);
+		}
+		i++;
+	}
+	i = 0;
+	while (i < data->map_height)
+	{
+		if (data->map[i][0] != '1' ||
+		data->map[i][data->map_width - 1] != '1')
+		{
+			ft_printf("Error : La map doit etre entoure de mur\n");
+			exit(1);
+		}
+		i++;
 	}
 }
