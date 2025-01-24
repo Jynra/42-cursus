@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/23 21:05:34 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/24 01:55:37 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	close_window(t_data *data)
 
 int	main(int ac, char **av)
 {
-	(void)	ac;
 	t_data	data;
 
+	(void) ac;
 	data.moves = 0;
 /* tests de bon fonctionnement */
-	if (!read_map(av[1],&data))
+	if (!read_map(av[1], &data))
 	{
 		ft_printf("Error : Cannot read map file\n");
 		return (1);
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	init_textures(&data);
 	render(&data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
-	mlx_hook(data.win, 2, 1L<<0, handle_keypress, &data);
+	mlx_hook(data.win, 2, 1L << 0, handle_keypress, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }
