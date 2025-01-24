@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:17:26 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/23 21:05:38 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/24 16:32:15 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	read_map(char *path, t_data *data)
 	int		i;
 
 	fd = open(path, O_RDONLY);
+	
 	if (fd < 0)
 		return (0);
 	if (!map_size(path, data))

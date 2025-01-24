@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/23 21:05:34 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/24 14:59:14 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void	check_elements(int player, int out, t_data *data);
 void	check_walls(t_data *data);
 void	init_textures(t_data *data);
 void	init_mlx(t_data *data);
+void	handle_exit(t_data *data);
+void	check_rect(t_data *data);
 
 #endif

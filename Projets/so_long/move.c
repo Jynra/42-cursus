@@ -6,12 +6,21 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:57:58 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/24 02:09:54 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:24:54 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	handle_exit(t_data *data)
+{
+	if (data->collected == data->collectibles)
+	{
+		ft_printf("SUCCESS\n");
+		close_window(data);
+	}
+	ft_printf("Collect all COINS before leave\n");
+}
 void	move_player(t_data *data, int dx, int dy)
 {
 	int	new_x;
@@ -23,12 +32,7 @@ void	move_player(t_data *data, int dx, int dy)
 	{
 		if (data->map[new_y][new_x] == 'E')
 		{
-			if (data->collected == data->collectibles)
-			{
-				ft_printf("SUCCESS\n");
-				close_window(data);
-			}
-			ft_printf("Collect all COINS before leave\n");
+			handle_exit(data);
 			return ;
 		}
 		if (data->map[new_y][new_x] == 'C')
