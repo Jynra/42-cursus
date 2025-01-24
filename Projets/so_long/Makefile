@@ -18,6 +18,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext
 
+CC = gcc
 SRC = so_long.c render.c parsing.c check_map.c move.c init.c
 OBJ = $(SRC:.c=.o)
 
@@ -28,7 +29,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -I$(MLX_PATH) -I$(LIBFT_PATH) $(MLX_FLAGS) -L$(LIBFT_PATH) -lft -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_PATH)$(LIBFT_PATH) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT_PATH) -c $< -o $@
 clean:
 	make -C $(LIBFT_PATH) clean
 	rm -f $(OBJ)
