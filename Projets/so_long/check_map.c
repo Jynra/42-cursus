@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/24 16:32:26 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 01:39:37 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	check_map(t_data *data)
 	}
 	check_elements(player, out, data);
 	check_walls(data);
-	check_rect(data);
 }
 
 void	check_elements(int player, int out, t_data *data)
@@ -94,22 +93,12 @@ void	check_walls(t_data *data)
 		i++;
 	}
 }
-void	check_rect(t_data *data)
+int	check_rect(char *line, int width)
 {
-	int	i;
 	int	len;
 
-	i = 0;
-	while (i < data->map_height)
-	{
-		len = 0;
-		while (data->map[i][len] && data->map[i][len] != '\n')
-			len++;
-		if (len != data->map_width)
-		{
-			ft_printf("Error : La map doit etre rectangle\n");
-			exit (1);
-		}
-		i++;
-	}
+	len = ft_strlen(line);
+	if (line[len - 1] == '\n')
+		len--;
+	return (len == width);
 }
