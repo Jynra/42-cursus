@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:27:25 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 13:33:04 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:02:53 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,20 @@ void	check_path(t_data *data)
 	temp_map = copy_map(data);
 	find_player(data, &player_x, &player_y);
 	flood_fill(temp_map, player_x, player_y, data);
-	i = 0;
-	while (i < data->map_height)
+	i = -1;
+	while (++i < data->map_height)
 	{
-		j = 0;
-		while (j < data->map_width)
+		j = -1;
+		while (++j < data->map_width)
 		{
 			if ((temp_map[i][j] == 'C' || temp_map[i][j] == 'E'))
 			{
 				ft_printf("ERROR : Path impossible\n");
+				free_map(temp_map, data);
 				exit(1);
 			}
-			j++;
 		}
-		i++;
 	}
+	free_map(temp_map, data);
 }
 

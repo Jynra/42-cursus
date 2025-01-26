@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 13:25:46 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 19:48:22 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	check_elements(int player, int out, t_data *data)
 	if (player != 1 || out != 1 || data->collectibles == 0)
 	{
 		ft_printf("Error : Invalid map elements\n");
+		free_game(data);
 		exit(1);
 	}
 	i = 0;
@@ -59,6 +60,7 @@ void	check_elements(int player, int out, t_data *data)
 			if (!ft_strchr("01PEC", data->map[i][j]))
 			{
 				ft_printf("Error : Caractere non valide\n");
+				free_game(data);
 				exit(1);
 			}
 			j++;
@@ -78,6 +80,7 @@ void	check_walls(t_data *data)
 		data->map[data->map_height - 1][i] != '1')
 		{
 			ft_printf("Error : La map doit etre entoure de mur\n");
+			free_game(data);
 			exit(1);
 		}
 		i++;
@@ -89,6 +92,7 @@ void	check_walls(t_data *data)
 		data->map[i][data->map_width - 1] != '1')
 		{
 			ft_printf("Error : La map doit etre entoure de mur\n");
+			free_game(data);
 			exit(1);
 		}
 		i++;

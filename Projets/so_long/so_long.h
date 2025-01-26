@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 13:19:51 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:20:29 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,25 @@ typedef struct s_data
 
 }				t_data;
 
-int	close_window(t_data *data);
+int		close_window(t_data *data);
 void	render(t_data *data);
-int	read_map(char *path, t_data *data);
-int	map_size(char *path, t_data *data);
-int	allocate_map(t_data *data);
+int		read_map(char *path, t_data *data);
+int		map_size(char *path, t_data *data);
+int		allocate_map(t_data *data);
 void	check_map(t_data *data);
-int	handle_keypress(int keycode, t_data *data);
+int		handle_keypress(int keycode, t_data *data);
 void	count_collectibles(t_data *data);
 void	check_elements(int player, int out, t_data *data);
 void	check_walls(t_data *data);
 void	init_textures(t_data *data);
 void	init_mlx(t_data *data);
 void	handle_exit(t_data *data);
-int	check_rect(char *line, int width);
+int		check_rect(char *line, int width);
 char	**copy_map(t_data *data);
 void	flood_fill(char **map, int x, int y, t_data *data);
 void	find_player(t_data *data, int *x, int *y);
 void	check_path(t_data *data);
+void	free_map(char **map, t_data *data);
+void	free_game(t_data *data);
 
 #endif

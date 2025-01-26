@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:57:58 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/24 13:24:54 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:00:45 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	handle_keypress(int keycode, t_data *data)
 	if (keycode == KEY_S || keycode == KEY_DOWN)
 		move_player(data, 0, 1);
 	if (keycode == KEY_A || keycode == KEY_LEFT)
-		move_player(data, -1, -0);
+		move_player(data, -1, 0);
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
 		move_player(data, 1, 0);
 	if (keycode == KEY_ESC)

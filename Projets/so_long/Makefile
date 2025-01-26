@@ -6,7 +6,7 @@
 #    By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:35:27 by ellucas           #+#    #+#              #
-#    Updated: 2025/01/26 12:35:57 by ellucas          ###   ########.fr        #
+#    Updated: 2025/01/26 19:31:40 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext
 
 CC = gcc
-SRC = so_long.c render.c parsing.c check_map.c move.c init.c flood_fill.c
+SRC = so_long.c render.c parsing.c check_map.c move.c init.c flood_fill.c free.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

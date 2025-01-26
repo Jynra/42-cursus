@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/24 01:55:37 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 20:01:09 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	close_window(t_data *data)
 {
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	free_game(data);
 	exit(0);
 	return (0);
 }
