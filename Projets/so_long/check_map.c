@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 01:39:37 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 13:25:46 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	check_map(t_data *data)
 	}
 	check_elements(player, out, data);
 	check_walls(data);
+	check_path(data);
 }
 
 void	check_elements(int player, int out, t_data *data)

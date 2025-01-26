@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 01:39:30 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/26 13:19:51 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,9 @@ void	init_textures(t_data *data);
 void	init_mlx(t_data *data);
 void	handle_exit(t_data *data);
 int	check_rect(char *line, int width);
+char	**copy_map(t_data *data);
+void	flood_fill(char **map, int x, int y, t_data *data);
+void	find_player(t_data *data, int *x, int *y);
+void	check_path(t_data *data);
 
 #endif
