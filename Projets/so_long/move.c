@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:57:58 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:26:42 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 16:40:47 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	handle_keypress(int keycode, t_data *data)
 void	count_collectibles(t_data *data)
 {
 	int	x;
-	int	y;
+	int	y;	
 
 	data->coin = 0;
 	data->collected = 0;

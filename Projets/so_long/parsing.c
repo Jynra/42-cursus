@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:17:26 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:26:40 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 16:43:35 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int	map_size(char *path, t_data *data)
 	{
 		if (!check_rect(line, data->map_width))
 		{
-			ft_printf("Error : Map non rectangulaire\n");
 			free(line);
-			close(fd);
-			exit(1);
+			while ((line = get_next_line(fd)))
+				free(line);
+			err("Error : Map non rectangulaire\n");
 		}
 		data->map_height++;
 		free(line);

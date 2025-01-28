@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:33:46 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 16:43:28 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@
 # define KEY_RIGHT		65363
 # define KEY_ESC		65307
 
-/* Map file */
-//# define MAP			"maps/wrong_map.ber"
-
 typedef struct s_data
 {
 	void	*mlx;
@@ -61,7 +58,6 @@ typedef struct s_data
 	int		coin;
 	int		collected;
 	int		moves;
-
 }				t_data;
 
 int		close_window(t_data *data);
@@ -85,5 +81,6 @@ void	check_path(t_data *data);
 void	free_map(char **map, t_data *data);
 void	free_game(t_data *data);
 void	put_sprite(t_data *data, int x, int y);
+void	err(char *str);
 
 #endif

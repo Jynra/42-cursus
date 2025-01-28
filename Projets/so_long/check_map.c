@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:26:11 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 16:14:48 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	check_elements(int player, int out, t_data *data)
 
 	if (player != 1 || out != 1 || data->coin == 0)
 	{
-		ft_printf("Error : Invalid map elements\n");
+		ft_printf("ERROR : Invalid map elements\n");
+		free_map(data->map, data);
 		exit(1);
 	}
 	i = 0;
@@ -58,7 +59,8 @@ void	check_elements(int player, int out, t_data *data)
 		{
 			if (!ft_strchr("01PEC", data->map[i][j]))
 			{
-				ft_printf("Error : Caractere non valide\n");
+				ft_printf("ERROR : Caractere non valide\n");
+				free_map(data->map, data);
 				exit(1);
 			}
 			j++;
@@ -77,7 +79,8 @@ void	check_walls(t_data *data)
 		if (data->map[0][i] != '1' ||
 		data->map[data->map_height - 1][i] != '1')
 		{
-			ft_printf("Error : La map doit etre entoure de mur\n");
+			ft_printf("ERROR : La map doit etre entoure de mur\n");
+			free_map(data->map, data);
 			exit(1);
 		}
 		i++;
@@ -88,7 +91,8 @@ void	check_walls(t_data *data)
 		if (data->map[i][0] != '1' ||
 		data->map[i][data->map_width - 1] != '1')
 		{
-			ft_printf("Error : La map doit etre entoure de mur\n");
+			ft_printf("ERROR : La map doit etre entoure de mur\n");
+			free_map(data->map, data);
 			exit(1);
 		}
 		i++;

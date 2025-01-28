@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:27:25 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:10:37 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 16:13:16 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	check_path(t_data *data)
 			{
 				ft_printf("ERROR : Path impossible\n");
 				free_map(temp_map, data);
+				free_map(data->map, data);
 				exit(1);
 			}
 		}
