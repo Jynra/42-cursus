@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 20:20:29 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:33:46 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_data
 	void	*floor_img;
 	void	*collect_img;
 	void	*exit_img;
-	void	*exit_close_img;
+	void	*close_img;
 	int		pos_x;
 	int		pos_y;
 	int		assets_width;
@@ -58,7 +58,7 @@ typedef struct s_data
 	char	**map;
 	int		map_width;
 	int		map_height;
-	int		collectibles;
+	int		coin;
 	int		collected;
 	int		moves;
 
@@ -84,5 +84,6 @@ void	find_player(t_data *data, int *x, int *y);
 void	check_path(t_data *data);
 void	free_map(char **map, t_data *data);
 void	free_game(t_data *data);
+void	put_sprite(t_data *data, int x, int y);
 
 #endif

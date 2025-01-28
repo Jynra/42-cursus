@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 19:47:45 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/24 02:06:48 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:27:19 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	init_textures(t_data *data)
 			&data->assets_width, &data->assets_height);
 	if (data->exit_img == NULL)
 		exit(1);
-	data->exit_close_img = mlx_xpm_file_to_image(data->mlx,
-			"resources/exit_close.xpm",
+	data->close_img = mlx_xpm_file_to_image(data->mlx,
+			"resources/close.xpm",
 			&data->assets_width, &data->assets_height);
-	if (data->exit_close_img == NULL)
+	if (data->close_img == NULL)
 		exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:17:26 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 01:44:35 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:26:40 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	read_map(char *path, t_data *data)
 	int		i;
 
 	fd = open(path, O_RDONLY);
-	
 	if (fd < 0)
 		return (0);
 	if (!map_size(path, data))
@@ -30,13 +29,11 @@ int	read_map(char *path, t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_strlcpy(data->map[i],line,data->map_width + 1);
-		//ft_printf("%s", line);
+		ft_strlcpy(data->map[i], line, data->map_width + 1);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
-	//map_size(path, data); //Recupere les dimensions de la map
 	close(fd);
 	count_collectibles(data);
 	check_map(data);
@@ -66,17 +63,16 @@ int	map_size(char *path, t_data *data)
 	while (line)
 	{
 		if (!check_rect(line, data->map_width))
-    	{
+		{
 			ft_printf("Error : Map non rectangulaire\n");
 			free(line);
 			close(fd);
 			exit(1);
-    	}
+		}
 		data->map_height++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	//ft_printf("\nhauteur de la carte = %d, largeur de la carte = %d\n", data->map_height, data->map_width);
 	close(fd);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 20:01:09 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:26:45 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,15 @@ int	main(int ac, char **av)
 
 	(void) ac;
 	data.moves = 0;
-/* tests de bon fonctionnement */
 	if (!read_map(av[1], &data))
 	{
 		ft_printf("Error : Cannot read map file\n");
 		return (1);
 	}
-	//check_map(&data);
-	//ft_printf("\nmap dimensions : L= %d , H= %d\n", data.map_width, data.map_height);
 	if (data.map)
 		ft_printf("Allocation de la map reussi\n");
 	else
 		ft_printf("Allocation de la map echoue\n");
-	//data.pos_x = 900;
-	//data.pos_y = 200;
 	init_mlx(&data);
 	init_textures(&data);
 	render(&data);

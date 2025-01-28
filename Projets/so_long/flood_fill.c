@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:27:25 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 20:02:53 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:10:37 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	**copy_map(t_data *data)
 {
 	char	**copy;
-	int	i;
+	int		i;
 
 	copy = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!copy)
@@ -94,4 +94,3 @@ void	check_path(t_data *data)
 	}
 	free_map(temp_map, data);
 }
-

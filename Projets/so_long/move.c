@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:57:58 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/26 20:00:45 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/01/28 13:26:42 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	handle_exit(t_data *data)
 {
-	if (data->collected == data->collectibles)
+	if (data->collected == data->coin)
 	{
 		ft_printf("SUCCESS\n");
 		close_window(data);
 	}
 	ft_printf("Collect all COINS before leave\n");
 }
+
 void	move_player(t_data *data, int dx, int dy)
 {
 	int	new_x;
@@ -28,7 +29,7 @@ void	move_player(t_data *data, int dx, int dy)
 
 	new_x = data->pos_x / SPRITE_SIZE + dx;
 	new_y = data->pos_y / SPRITE_SIZE + dy;
-	if (data->map[new_y][new_x] != '1') //Si c'est pas un mur le player peu avancer
+	if (data->map[new_y][new_x] != '1')
 	{
 		if (data->map[new_y][new_x] == 'E')
 		{
@@ -37,7 +38,7 @@ void	move_player(t_data *data, int dx, int dy)
 		}
 		if (data->map[new_y][new_x] == 'C')
 			data->collected++;
-		data->map[data->pos_y / SPRITE_SIZE][data->pos_x / SPRITE_SIZE] = '0'; //Remplace le bloc traverser par un bloc de sol
+		data->map[data->pos_y / SPRITE_SIZE][data->pos_x / SPRITE_SIZE] = '0';
 		data->map[new_y][new_x] = 'P';
 		data->pos_x = new_x * SPRITE_SIZE;
 		data->pos_y = new_y * SPRITE_SIZE;
@@ -59,7 +60,6 @@ int	handle_keypress(int keycode, t_data *data)
 	if (keycode == KEY_ESC)
 		close_window(data);
 	render(data);
-	//ft_printf("Touche = %d  Position : x = %d, y = %d\n", keycode, data->pos_x, data->pos_y);
 	return (0);
 }
 
@@ -68,7 +68,7 @@ void	count_collectibles(t_data *data)
 	int	x;
 	int	y;
 
-	data->collectibles = 0;
+	data->coin = 0;
 	data->collected = 0;
 	y = 0;
 	while (y < data->map_height)
@@ -77,7 +77,7 @@ void	count_collectibles(t_data *data)
 		while (x < data->map_width)
 		{
 			if (data->map[y][x] == 'C')
-				data->collectibles++;
+				data->coin++;
 			x++;
 		}
 		y++;
