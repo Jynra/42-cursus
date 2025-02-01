@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 16:14:48 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/01 13:40:00 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,8 @@ void	check_elements(int player, int out, t_data *data)
 
 	if (player != 1 || out != 1 || data->coin == 0)
 	{
-		ft_printf("ERROR : Invalid map elements\n");
 		free_map(data->map, data);
-		exit(1);
+		err("ERROR : Invalid map elements\n");
 	}
 	i = 0;
 	while (i < data->map_height)
@@ -59,9 +58,8 @@ void	check_elements(int player, int out, t_data *data)
 		{
 			if (!ft_strchr("01PEC", data->map[i][j]))
 			{
-				ft_printf("ERROR : Caractere non valide\n");
 				free_map(data->map, data);
-				exit(1);
+				err("ERROR : Caractere non valide\n");
 			}
 			j++;
 		}
@@ -79,9 +77,8 @@ void	check_walls(t_data *data)
 		if (data->map[0][i] != '1' ||
 		data->map[data->map_height - 1][i] != '1')
 		{
-			ft_printf("ERROR : La map doit etre entoure de mur\n");
 			free_map(data->map, data);
-			exit(1);
+			err("ERROR : La map doit etre entoure de mur\n");
 		}
 		i++;
 	}
@@ -91,9 +88,8 @@ void	check_walls(t_data *data)
 		if (data->map[i][0] != '1' ||
 		data->map[i][data->map_width - 1] != '1')
 		{
-			ft_printf("ERROR : La map doit etre entoure de mur\n");
 			free_map(data->map, data);
-			exit(1);
+			err("ERROR : La map doit etre entoure de mur\n");
 		}
 		i++;
 	}
@@ -107,4 +103,13 @@ int	check_rect(char *line, int width)
 	if (line[len - 1] == '\n')
 		len--;
 	return (len == width);
+}
+
+void	check_filetype(char *str)
+{
+	int len;
+
+    len = ft_strlen(str);
+    if (len < 4 || !ft_strnstr(&str[len - 4], ".ber", 4))
+        err("ERROR : map filetype must be .ber\n");
 }

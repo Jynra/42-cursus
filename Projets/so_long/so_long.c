@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:26:45 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/01 13:08:54 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	main(int ac, char **av)
 
 	(void) ac;
 	data.moves = 0;
+	if (ac > 2)
+		err("ERROR : Too much parameters\n");
+	check_filetype(av[1]);
 	if (!read_map(av[1], &data))
 	{
 		ft_printf("Error : Cannot read map file\n");
@@ -33,7 +36,7 @@ int	main(int ac, char **av)
 	if (data.map)
 		ft_printf("Allocation de la map reussi\n");
 	else
-		ft_printf("Allocation de la map echoue\n");
+		err("Allocation de la map echoue\n");
 	init_mlx(&data);
 	init_textures(&data);
 	render(&data);
