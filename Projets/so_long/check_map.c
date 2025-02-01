@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/01 13:40:00 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/01 13:46:27 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	check_filetype(char *str)
 {
 	int len;
 
-    len = ft_strlen(str);
-    if (len < 4 || !ft_strnstr(&str[len - 4], ".ber", 4))
-        err("ERROR : map filetype must be .ber\n");
+	len = ft_strlen(str);
+	if (len < 4 || !ft_strnstr(&str[len - 4], ".ber", 4))
+		err("ERROR : map filetype must be .ber\n");
 }
