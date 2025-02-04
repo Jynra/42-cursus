@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/01 13:45:46 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 16:44:22 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void	free_game(t_data *data);
 void	put_sprite(t_data *data, int x, int y);
 void	err(char *str);
 void	check_filetype(char *str);
+void	clear_buffer(int fd);
 
 #endif
