@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:17:26 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 16:43:35 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 14:28:30 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	read_map(char *path, t_data *data)
 {

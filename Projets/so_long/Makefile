@@ -6,36 +6,46 @@
 #    By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:35:27 by ellucas           #+#    #+#              #
-#    Updated: 2025/01/28 16:43:19 by ellucas          ###   ########.fr        #
+#    Updated: 2025/02/04 15:14:08 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-MLX_PATH = minilibx-linux
-LIBFT_PATH = libft
-LIBFT = $(LIBFT_PATH)/libft.a
+SRC_DIR = src/
+OBJ_DIR = obj/
+INC_DIR = includes/
+MLX_DIR = $(INC_DIR)minilibx-linux/
+LIBFT_DIR = $(INC_DIR)libft/
+LIBFT = $(LIBFT_DIR)/libft.a
 CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -L$(MLX_PATH) -lmlx -lX11 -lXext
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext
+INCLUDES = -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 CC = gcc
-SRC = so_long.c render.c parsing.c check_map.c move.c init.c flood_fill.c free.c errors.c
-OBJ = $(SRC:.c=.o)
+SRC_FILES = so_long.c render.c parsing.c move.c init.c free.c flood_fill.c errors.c check_map.c
+
+SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C $(LIBFT_PATH)
-	$(CC) $(OBJ) -I$(MLX_PATH) -I$(LIBFT_PATH) $(MLX_FLAGS) -L$(LIBFT_PATH) -lft -o $(NAME)
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT_PATH) -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(OBJ_DIR) $(OBJ)
+	make -C $(LIBFT_DIR)
+	$(CC) $(OBJ) -I$(INCLUDES) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
+
 clean:
-	make -C $(LIBFT_PATH) clean
-	rm -f $(OBJ)
+	make -C $(LIBFT_DIR) clean
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	make -C $(LIBFT_PATH) fclean
+	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

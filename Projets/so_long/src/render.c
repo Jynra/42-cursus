@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:17:08 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:39:48 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 14:28:33 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	put_sprite(t_data *data, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:27:25 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 16:13:16 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 14:28:16 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 char	**copy_map(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:17:14 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 16:43:32 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:16:14 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	err(char *str)
 {

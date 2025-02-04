@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:30:48 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:27:45 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 14:28:19 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	free_map(char **map, t_data *data)
 {

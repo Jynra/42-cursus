@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/01 13:08:54 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:10:35 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	close_window(t_data *data)
 {

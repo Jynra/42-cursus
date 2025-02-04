@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:14:09 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/01 13:46:27 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:15:32 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	check_map(t_data *data)
 {
@@ -107,7 +107,7 @@ int	check_rect(char *line, int width)
 
 void	check_filetype(char *str)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(str);
 	if (len < 4 || !ft_strnstr(&str[len - 4], ".ber", 4))

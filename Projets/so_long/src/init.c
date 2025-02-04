@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 19:47:45 by ellucas           #+#    #+#             */
-/*   Updated: 2025/01/28 13:27:19 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:09:53 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	init_mlx(t_data *data)
 {
