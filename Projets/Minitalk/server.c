@@ -3,12 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:51 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/06 13:11:38 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/10 01:16:35 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int	main(void)
+{
+	ft_putstr_fd("Server PID : ", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putchar_fd('\n', 1);
+	while (1)
+		;
+	return (0);
+}
