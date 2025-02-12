@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:48 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/10 23:31:47 by jynra            ###   ########.fr       */
+/*   Updated: 2025/02/12 13:38:20 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,14 @@ void	send_char(pid_t server_pid, char c)
 {
 	int	bit;
 
-	bit = 7;	/* start sur le bit le plus fort */
-	
+	bit = 7;
 	while (bit >= 0)
 	{	
 		if (c & (1 << bit))
 			kill(server_pid, SIGUSR2);
 		else
 			kill(server_pid, SIGUSR1);
-		wait_for_ack(); /* Attend ackitment du server */
+		wait_for_ack();
 		bit--;
 	}
 }
@@ -64,24 +63,15 @@ int	main(int ac, char **av)
 	struct sigaction	sa;
 
 	if (ac != 3)
-	{
-		ft_printf("Usage : ./client [server_pid] [message]\n");
-		return (1);
-	}
-
-	/* Config gestionnaire d'ackitment */
+		ft_error("Usage : ./client [server_pid] [message]\n");
 	sa.sa_handler = ack_handler;
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 		ft_error("Error : sigaction failed\n");
-	
 	server_pid = ft_atoi(av[1]);
 	if (server_pid <= 0 || kill(server_pid, 0) == -1)
-	{
 		ft_error("Error : Invalid PID\n\n");
-		return (1);
-	}
 	i = 0;
 	message = av[2];
 	while (message[i])

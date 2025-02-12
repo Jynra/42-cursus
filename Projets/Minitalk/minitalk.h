@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:17:24 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/10 23:11:20 by jynra            ###   ########.fr       */
+/*   Updated: 2025/02/12 13:03:15 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# define _POSIX_C_SOURCE 199309L	// Definition POSIX
-# define _DEFAULT_SOURCE			// usleep
+# define _POSIX_C_SOURCE 199309L
+# define _DEFAULT_SOURCE
 
 # include <unistd.h>
 # include <signal.h>
@@ -27,8 +27,8 @@
 
 typedef struct s_data
 {
-	char			c;				// char en construction
-	int				bit_count;		// Nb de bits recus (0-7)
+	char			c;
+	int				bit_count;
 	clock_t			start_time;
 	int				is_first_char;
 	pid_t			client_pid;
