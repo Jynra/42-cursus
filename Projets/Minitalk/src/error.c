@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/10 16:38:27 by jynra            ###   ########.fr       */
+/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 void	ft_error(char *str)
 {

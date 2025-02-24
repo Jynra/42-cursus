@@ -6,19 +6,20 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:48 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/12 13:38:20 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:54:33 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 volatile sig_atomic_t	g_received = 0;
-
+/*
 void	ft_error(char *str)
 {
 	ft_putstr_fd(str, 2);
 	exit(1);
 }
+*/
 
 void	ack_handler(int signum)
 {

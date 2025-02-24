@@ -6,19 +6,20 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:51 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/12 13:32:37 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/02/24 15:38:38 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 t_data	g_data;
-
+/*
 void	ft_error(char *str)
 {
 	ft_putstr_fd(str, 2);
 	exit(1);
 }
+*/
 
 void	print_banner(void)
 {
@@ -30,10 +31,12 @@ void	print_banner(void)
 	{
 		ft_error("Error: Could not read banner\n");
 	}
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		ft_putstr_fd(line, 1);
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 }
@@ -51,6 +54,19 @@ void	print_time(void)
 	ft_putstr_fd(" ms\n", 1);
 	ft_putstr_fd("\n[OUTPUT] : ", 1);
 	g_data.is_first_char = 1;
+}
+
+void	handle_char_complete(void)
+{
+	if (g_data.is_first_char)
+	{
+		time(&g_data.start_time);
+		g_data.is_first_char = 0;
+	}
+	if (g_data.c == '\n')
+		print_time();
+	g_data.c = 0;
+	g_data.bit_count = 0;
 }
 
 void	handle_signal(int signum, siginfo_t *info, void *context)
@@ -72,19 +88,9 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 		g_data.c = 0;
 		g_data.bit_count = 0;
 	}
-	kill(g_data.client_pid, SIGUSR1);
 	if (g_data.bit_count == 8)
-	{
-		if (g_data.is_first_char)
-		{
-			time(&g_data.start_time);
-			g_data.is_first_char = 0;
-		}
-		if (g_data.c == '\n')
-			print_time();
-		g_data.c = 0;
-		g_data.bit_count = 0;
-	}
+		handle_char_complete();
+	kill(g_data.client_pid, SIGUSR1);
 }
 
 int	main(void)
