@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 11:34:21 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/14 14:20:33 by ellucas          ###   ########.fr       */
+/*   Created: 2025/03/03 15:55:20 by ellucas           #+#    #+#             */
+/*   Updated: 2025/03/03 15:59:32 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../includes/push_swap.h"
 
-# include <stdlib.h>
-
-typedef struct s_node
+void	pa(t_stack *stack_b, t_stack *stack_a)
 {
-	int				value;
-	struct s_node	*next;
-	struct s_node	*prev;
-}	t_node;
+	t_node	*first;
 
-typedef struct s_stack
+	if (!stack_b)
+		return ;
+	stack_a->top = stack_b->top;
+}
+
+void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*top;
-	t_node	*bottom;
-	int		size;
-}	t_stack;
+	t_node	*first;
 
-typedef struct s_program
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-}	t_program;
-
-#endif
+	if (!stack_a)
+		return ;
+	stack_b->top = stack_a->top;
+}

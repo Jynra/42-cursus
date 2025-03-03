@@ -6,65 +6,44 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 15:50:46 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/19 17:02:24 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/03 15:54:56 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "../includes/push_swap.h"
 
-void	swap_a(int *a)
+void	sa(t_stack	*stack_a)
 {
 	int	temp;
+	t_node	*first;
+	t_node	*second;
 
-	temp = a[0];
-	a[0] = a[1];
-	a[1] = temp;
+	if (stack_a->size < 2)
+		return ;
+	first = stack_a->top;
+	second = first->next;
+	temp = first->value;
+	first->value = second->value;
+	second->value = temp;
 }
 
-void	swap_b(int *b)
+void	sb(t_stack	*stack_b)
 {
 	int	temp;
+	t_node	*first;
+	t_node	*second;
 
-	temp = b[0];
-	b[0] = b[1];
-	b[1] = temp;
+	if (stack_b->size < 2)
+		return ;
+	first = stack_b->top;
+	second = first->next;
+	temp = first->value;
+	first->value = second->value;
+	second->value = temp;
 }
 
-void	swap_a_b(int *a, int *b)
+void	ss(t_stack	*stack_a, t_stack	*stack_b)
 {
-	swap_a(a);
-	swap_b(b);
-}
-
-int	*stack_a(char **av, int size)
-{
-	int	*stack_a;
-	int	i;
-
-	stack_a = (int *)malloc(sizeof(int) * (size));
-	i = 0;
-	while (i <= size)
-	{
-		stack_a[i] = atoi(av[i]);
-		i++;
-	}
-	return (stack_a);
-}
-
-int	main(int ac, char **av)
-{
-	if (ac < 3)
-		return(0);
-	int	i;
-	int	size = ac - 1;
-	int	*tab = stack_a(av, size);
-	printf("stack_a size = %d\n", size);
-	printf("stack_a : ");
-	i = 0;
-	while (++i <= size)
-	{
-		printf("%d ", tab[i]);
-		//i++;
-	}
+	sa(stack_a);
+	sb(stack_b);
 }
