@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    tester.sh                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
+#    By: jynra <jynra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 13:19:31 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/04 14:25:47 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/04 22:40:59 by jynra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,15 @@ mkdir -p $INVALID_MAPS_DIR
 # Fonction d'affichage
 print_header() 
 {
-    echo -e "\n${BLUE}==== $1 ====${NC}\n"
+    echo "\n${BLUE}==== $1 ====${NC}\n"
 }
 
 print_result() 
 {
     if [ $1 -eq 0 ]; then
-        echo -e "${GREEN}✓ SUCCÈS${NC}: $2"
+        echo "${GREEN}✓ SUCCÈS${NC}: $2"
     else
-        echo -e "${RED}✗ ÉCHEC${NC}: $2 (code: $1)"
+        echo "${RED}✗ ÉCHEC${NC}: $2 (code: $1)"
     fi
 }
 
@@ -50,7 +50,7 @@ test_norm()
     
 	#norminette --version &> /dev/null
     if [ $? -ne 0 ]; then
-        echo -e "${YELLOW}⚠ AVERTISSEMENT: norminette n'est pas installée${NC}"
+        echo "${YELLOW}⚠ AVERTISSEMENT: norminette n'est pas installée${NC}"
         return
     fi
     
@@ -58,9 +58,9 @@ test_norm()
     NORM_ERRORS=$(norminette src includes/so_long.h | grep -E "Error|Warning" | wc -l)
     
     if [ $NORM_ERRORS -eq 0 ]; then
-        echo -e "${GREEN}✓ Code conforme à la norme${NC}"
+        echo "${GREEN}✓ Code conforme à la norme${NC}"
     else
-        echo -e "${RED}✗ $NORM_ERRORS erreurs de norme trouvées${NC}"
+        echo "${RED}✗ $NORM_ERRORS erreurs de norme trouvées${NC}"
         norminette src includes | grep -E "Error|Warning"
     fi
 }
@@ -203,7 +203,7 @@ test_valid_maps()
     print_header "TEST DES CARTES VALIDES"
     
     for map in $VALID_MAPS_DIR/*.ber; do
-        echo -e "\nTest de $(basename $map)..."
+        echo "\nTest de $(basename $map)..."
         
         timeout 1s ./so_long "$map" > /dev/null 2>&1
         RESULT=$?
@@ -225,7 +225,7 @@ test_invalid_maps()
     print_header "TEST DES CARTES INVALIDES"
     
     for map in $INVALID_MAPS_DIR/*; do
-        echo -e "\nTest de $(basename $map)..."
+        echo "\nTest de $(basename $map)..."
         
         ./so_long "$map" > /dev/null 2>&1
         RESULT=$?
@@ -246,7 +246,7 @@ test_memory()
     
 	#valgrind --version &> /dev/null
     if [ $? -ne 0 ]; then
-        echo -e "${YELLOW}⚠ AVERTISSEMENT: valgrind n'est pas installé${NC}"
+        echo "${YELLOW}⚠ AVERTISSEMENT: valgrind n'est pas installé${NC}"
         return
     fi
     
@@ -264,7 +264,7 @@ test_memory()
         cat valgrind_valid.log | grep -E "definitely lost|indirectly lost|possibly lost"
     fi
     
-    echo -e "\nTest avec une carte invalide..."
+    echo "\nTest avec une carte invalide..."
     INVALID_MAP="$INVALID_MAPS_DIR/no_exit.ber"
     
     valgrind --log-file=valgrind_invalid.log ./so_long "$INVALID_MAP" > /dev/null 2>&1
@@ -273,17 +273,18 @@ test_memory()
     if [ $RESULT -eq 1 ]; then
         grep -q "definitely lost: 0 bytes" valgrind_invalid.log
         if [ $? -eq 1 ]; then
+			cat valgrind_invalid.log
             print_result 0 "Pas de fuites de mémoire sur erreur"
         else
             print_result 1 "Fuites de mémoire sur erreur"
-            cat valgrind_invalid.log | grep -E "definitely lost|indirectly lost|possibly lost"
+            #cat valgrind_invalid.log | grep -E "definitely lost|indirectly lost|possibly lost"
         fi
     else
         print_result $RESULT "Résultat inattendu"
     fi
     
     rm -f valgrind_valid.log valgrind_invalid.log
-	make fclean
+	make fclean > /dev/null
 }
 
 # Exécution des tests
@@ -296,7 +297,7 @@ test_invalid_maps
 test_memory
 
 print_header "RÉSUMÉ DES TESTS"
-echo -e "Tous les tests sont terminés."
-echo -e "✅ Vérifiez les résultats ci-dessus pour vous assurer que tout est conforme."
+echo "Tous les tests sont terminés."
+echo "✅ Vérifiez les résultats ci-dessus pour vous assurer que tout est conforme."
 
 exit 0
