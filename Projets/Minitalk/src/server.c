@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:51 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/24 15:38:38 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/04 16:10:49 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void	print_time(void)
 		/ CLOCKS_PER_SEC * 1000;
 	ft_putstr_fd("Time taken : ", 1);
 	ft_putnbr_fd((int)time_taken, 1);
-	ft_putstr_fd(" ms\n", 1);
-	ft_putstr_fd("\n[OUTPUT] : ", 1);
+	ft_putstr_fd(" ms\n\n", 1);
 	g_data.is_first_char = 1;
 }
 
@@ -109,8 +108,7 @@ int	main(void)
 	sigaction(SIGUSR2, &sa, NULL);
 	ft_putstr_fd("\nPID : ", 1);
 	ft_putnbr_fd(getpid(), 1);
-	ft_putchar_fd('\n', 1);
-	ft_putstr_fd("\n[OUTPUT] : ", 1);
+	ft_putstr_fd("\n\n", 1);
 	while (1)
 		pause ();
 	return (0);
