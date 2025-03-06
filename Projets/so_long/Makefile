@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+         #
+#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/14 13:35:27 by ellucas           #+#    #+#              #
-#    Updated: 2025/02/04 15:14:08 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/06 14:24:22 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,15 +37,15 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	make -C $(LIBFT_DIR)
-	$(CC) $(OBJ) -I$(INCLUDES) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
+#	make -C $(LIBFT_DIR)
+	$(CC) $(OBJ) $(INCLUDES) $(MLX_FLAGS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 clean:
-	make -C $(LIBFT_DIR) clean
+#	make -C $(LIBFT_DIR) clean
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
+#	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

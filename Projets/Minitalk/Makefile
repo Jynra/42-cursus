@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jynra <jynra@student.42.fr>                +#+  +:+       +#+         #
+#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/06 12:03:54 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/06 13:52:54 by jynra            ###   ########.fr        #
+#    Updated: 2025/03/06 13:59:59 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,11 @@ INCLUDES = -I$(INC_DIR)
 
 all: $(NAME) $(CLIENT)
 
-# Supprimer cette règle pour éviter la recompilation de libft
-# $(LIBFT):
-#	make -C $(LIBFT_DIR)
-
 $(NAME):
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_SERVER) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_SERVER) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 $(CLIENT):
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_CLIENT) $(LIBFT) -o $(CLIENT)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_CLIENT) -L$(LIBFT_DIR) -lft -o $(CLIENT)
 
 clean:
 	@echo "Cleaning object files..."

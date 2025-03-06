@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+         #
+#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/07 15:14:40 by ellucas           #+#    #+#              #
-#    Updated: 2024/10/25 23:16:19 by ellucas          ###   LAUSANNE.ch        #
+#    Updated: 2025/03/06 14:18:13 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 PRINTF_DIR = printf/
 GNL_DIR = gnl/
+SECURE_DIR = secure/
 
 PRINTF_SRCS = \
     ft_printf.c ft_printchar.c ft_printint.c ft_printstr.c \
@@ -59,12 +60,22 @@ $(PRINTF_DIR)%.o: $(PRINTF_DIR)%.c
 $(GNL_DIR)%.o: $(GNL_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Création du dossier sécurisé
+secure: $(NAME)
+	@mkdir -p $(SECURE_DIR)
+	@cp $(NAME) $(SECURE_DIR)
+	@cp libft.h $(SECURE_DIR)
+	@echo "Bibliothèque sécurisée créée dans $(SECURE_DIR)"
+
 clean:
 	rm -f $(OBJECTS) $(BOBJECTS) $(PRINTF_OBJS) $(GNL_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
+fclean_secure: fclean
+	rm -rf $(SECURE_DIR)
+
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re secure
