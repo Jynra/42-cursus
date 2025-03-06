@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
+#    By: jynra <jynra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/06 12:03:54 by ellucas           #+#    #+#              #
-#    Updated: 2025/02/24 15:55:27 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/06 13:52:54 by jynra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,23 +21,24 @@ SRC_CLIENT = $(SRC_DIR)client.c $(SRC_DIR)error.c
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
+INCLUDES = -I$(INC_DIR)
 
 all: $(NAME) $(CLIENT)
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+# Supprimer cette règle pour éviter la recompilation de libft
+# $(LIBFT):
+#	make -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC_SERVER) -L$(LIBFT_DIR) -lft -o $(NAME)
+$(NAME):
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_SERVER) $(LIBFT) -o $(NAME)
 
-$(CLIENT): $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC_CLIENT) -L$(LIBFT_DIR) -lft -o $(CLIENT)
+$(CLIENT):
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRC_CLIENT) $(LIBFT) -o $(CLIENT)
 
 clean:
-	make -C $(LIBFT_DIR) clean
+	@echo "Cleaning object files..."
 
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME) $(CLIENT)
 
 re: fclean all
