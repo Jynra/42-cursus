@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:06:38 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/03 15:51:12 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/06 17:42:45 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void free_stack(t_stack *stack)
 int main(int argc, char **argv)
 {
     t_stack *stack_a;
+	t_stack	*stack_b;
     int i;
     int value;
     
@@ -107,6 +108,7 @@ int main(int argc, char **argv)
     
     // Initialisation de la pile
     stack_a = init_stack();
+	stack_b = init_stack();
     if (!stack_a)
         return (1);
     
@@ -123,18 +125,22 @@ int main(int argc, char **argv)
     }
     
     // Affichage avant swap
-    printf("Avant sa:\n");
+    //printf("Avant sa:\n");
     print_stack(stack_a);
+	print_stack(stack_b);
     
     // Appliquer sa
     sa(stack_a);
+	pb(stack_a, stack_b);
     
     // Affichage après swap
-    printf("Après sa:\n");
+    printf("\nAprès sa et pb:\n");
     print_stack(stack_a);
+	print_stack(stack_b);
     
     // Libération de la mémoire
     free_stack(stack_a);
+	//free_stack(stack_b);
     
     return (0);
 }

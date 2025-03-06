@@ -81,6 +81,10 @@ server_launch()
 	./client $SERVER_PID "Ce message est plus long pour tester la performance du programme avec des messages de taille conséquente. On veut s'assurer que tout fonctionne correctement, même avec un grand nombre de caractères."
 	sleep 1
 
+	print_test "Test avec un message tres long..."
+	./client $SERVER_PID "Take my love, take my land Take me where I cannot stand I don’t care, I’m still free You can’t take the sky from me.Take me out to the black Tell them I ain’t comin’ back Burn the land and boil the sea You can’t take the sky from me. Leave the men where they lay They’ll never see another day Lost my soul, lost my dream You can’t take the sky from me. I feel the black reaching out I hear its song without a doubt I still hear and I still see That you can’t take the sky from me. Lost my love, lost my land Lost the last place I could stand There’s no place I can be Since I’ve found Serenity And you can’t take the sky from me."
+	sleep 1
+
 	print_test "Test avec des caractères spéciaux..."
 	./client $SERVER_PID "!@#$%^&*()_+{}|:<>?~"
 	sleep 1
