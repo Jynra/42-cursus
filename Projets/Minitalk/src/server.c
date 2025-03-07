@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:51 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/06 13:54:01 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/07 13:31:44 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
 t_data	g_data;
-/*
-void	ft_error(char *str)
-{
-	ft_putstr_fd(str, 2);
-	exit(1);
-}
-*/
 
 void	print_banner(void)
 {
@@ -55,19 +48,6 @@ void	print_time(void)
 	g_data.is_first_char = 1;
 }
 
-void	handle_char_complete(void)
-{
-	if (g_data.is_first_char)
-	{
-		time(&g_data.start_time);
-		g_data.is_first_char = 0;
-	}
-	if (g_data.c == '\n')
-		print_time();
-	g_data.c = 0;
-	g_data.bit_count = 0;
-}
-
 void	handle_signal(int signum, siginfo_t *info, void *context)
 {
 	(void)context;
@@ -81,14 +61,18 @@ void	handle_signal(int signum, siginfo_t *info, void *context)
 	}
 	if (g_data.bit_count == 8)
 	{
-		write(1, &g_data.c, 1);
-		if (g_data.c == '\n')
+		if (g_data.is_first_char)
+		{
+			g_data.start_time = clock();
+			g_data.is_first_char = 0;
+		}
+		if (g_data.c == '\0')
 			print_time();
+		else
+			write(1, &g_data.c, 1);
 		g_data.c = 0;
 		g_data.bit_count = 0;
 	}
-	if (g_data.bit_count == 8)
-		handle_char_complete();
 	kill(g_data.client_pid, SIGUSR1);
 }
 

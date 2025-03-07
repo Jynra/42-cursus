@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:03:48 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/06 13:54:17 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/07 13:31:11 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int	main(int ac, char **av)
 		i++;
 	}
 	send_char(server_pid, '\n');
+	send_char(server_pid, '\0');
 	return (0);
 }
