@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
+/*   Created: 2024/10/01 16:52:49 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/07 15:39:42 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+void	*ft_memset(void *str, int c, size_t len)
 {
-	ft_putstr_fd(str, 2);
-	exit(1);
+	size_t			i;
+	unsigned char	*ptr;
+
+	i = 0;
+	ptr = (unsigned char *)str;
+	while (i < len)
+	{
+		ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (str);
 }

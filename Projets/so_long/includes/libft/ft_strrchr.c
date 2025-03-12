@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
+/*   Created: 2024/10/08 16:10:09 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/11 14:24:02 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	ft_putstr_fd(str, 2);
-	exit(1);
+	char	*ptr;
+
+	ptr = 0;
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			ptr = (char *)s;
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (ptr);
 }

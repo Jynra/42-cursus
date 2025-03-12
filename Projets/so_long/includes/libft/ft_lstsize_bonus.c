@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tchevrie <tchevrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
+/*   Created: 2022/09/19 16:21:49 by tchevrie          #+#    #+#             */
+/*   Updated: 2022/10/05 05:07:42 by tchevrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+int	ft_lstsize(t_list *lst)
 {
-	ft_putstr_fd(str, 2);
-	exit(1);
+	int	size;
+
+	size = 0;
+	while (lst)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
+/*   Created: 2024/10/25 13:21:33 by ellucas           #+#    #+#             */
+/*   Updated: 2024/10/25 13:25:55 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
-	ft_putstr_fd(str, 2);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(fd, &str[i], 1);
+		i++;
+	}
 }

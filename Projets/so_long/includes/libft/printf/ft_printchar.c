@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ellucas <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
+/*   Created: 2024/08/21 10:56:37 by ellucas           #+#    #+#             */
+/*   Updated: 2024/11/15 16:37:17 by ellucas          ###   LAUSANNE.ch       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../libft.h"
 
-#include "../includes/minitalk.h"
-
-void	ft_error(char *str)
+int	ft_printchar(char c)
 {
-	ft_putstr_fd(str, 2);
-	exit(1);
+	write(1, &c, 1);
+	return (1);
 }
+/*
+int	main(void)
+{
+	ft_putchar('a');
+}
+*/

@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tchevrie <tchevrie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:23:19 by jynra             #+#    #+#             */
-/*   Updated: 2025/02/24 14:05:03 by ellucas          ###   ########.fr       */
+/*   Created: 2022/09/19 16:59:36 by tchevrie          #+#    #+#             */
+/*   Updated: 2022/10/05 05:07:42 by tchevrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "libft.h"
 
-void	ft_error(char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	ft_putstr_fd(str, 2);
-	exit(1);
+	if (!lst || !(*lst) || !del)
+		return ;
+	if ((*lst)->next)
+		ft_lstclear((&(*lst)->next), del);
+	del((*lst)->content);
+	free(*lst);
+	*lst = NULL;
 }
