@@ -6,7 +6,7 @@
 /*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:21:17 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/14 12:07:34 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/15 00:31:24 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 		pb(b, a, false);
 	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
-	while (len_a-- > 3 &&!stack_sorted(*a))
+	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		init_node_a(*a, *b);
 		move_a_to_b(a, b);
