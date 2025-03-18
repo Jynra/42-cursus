@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:58:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/04 16:44:22 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/18 15:10:19 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_data
 	void	*close_img;
 	int		pos_x;
 	int		pos_y;
+	int		exit_x;
+	int		exit_y;
 	int		assets_width;
 	int		assets_height;
 	char	**map;
@@ -84,5 +86,6 @@ void	put_sprite(t_data *data, int x, int y);
 void	err(char *str);
 void	check_filetype(char *str);
 void	clear_buffer(int fd);
+void	exit_pos(t_data *data);
 
 #endif

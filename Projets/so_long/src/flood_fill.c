@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 12:27:25 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/04 14:28:16 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/18 16:51:11 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	check_path(t_data *data)
 		{
 			if ((temp_map[i][j] == 'C' || temp_map[i][j] == 'E'))
 			{
-				ft_printf("ERROR : Path impossible\n");
+				ft_printf("ERROR : Impossible path\n");
 				free_map(temp_map, data);
 				free_map(data->map, data);
 				exit(1);
@@ -94,4 +94,25 @@ void	check_path(t_data *data)
 		}
 	}
 	free_map(temp_map, data);
+}
+
+void	count_collectibles(t_data *data)
+{
+	int	x;
+	int	y;	
+
+	data->coin = 0;
+	data->collected = 0;
+	y = 0;
+	while (y < data->map_height)
+	{
+		x = 0;
+		while (x < data->map_width)
+		{
+			if (data->map[y][x] == 'C')
+				data->coin++;
+			x++;
+		}
+		y++;
+	}
 }

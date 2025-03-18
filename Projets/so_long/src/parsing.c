@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 22:17:26 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/04 16:49:57 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/18 14:39:09 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,31 @@ int	read_map(char *path, t_data *data)
 	close(fd);
 	count_collectibles(data);
 	check_map(data);
+	exit_pos(data);
 	return (1);
+}
+
+void	exit_pos(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < data->map_height)
+	{
+		x = 0;
+		while (x < data->map_width)
+		{
+			if (data->map[y][x] == 'E')
+			{
+				data->exit_x = x;
+				data->exit_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
 void	get_width(char *line, t_data *data)

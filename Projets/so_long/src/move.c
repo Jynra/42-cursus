@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:57:58 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/04 14:28:26 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/18 16:11:18 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,41 @@ void	handle_exit(t_data *data)
 	ft_printf("Collect all COINS before leave\n");
 }
 
+void	update_exit(t_data *data)
+{
+	if (data->collected == data->coin)
+		mlx_put_image_to_window(data->mlx, data->win, data->exit_img,
+			data->pos_x, data->pos_y);
+	else
+		mlx_put_image_to_window(data->mlx, data->win, data->close_img,
+			data->pos_x, data->pos_y);
+}
+
+void	update_player_pos(t_data *data, int new_x, int new_y)
+{
+	int			is_exit;
+	static int	on_exit = 0;
+
+	is_exit = (data->map[new_y][new_x] == 'E');
+	if (on_exit && !is_exit)
+		update_exit(data);
+	else
+	{
+		data->map[data->pos_y / SPRITE_SIZE][data->pos_x / SPRITE_SIZE] = '0';
+		mlx_put_image_to_window(data->mlx, data->win, data->floor_img,
+			data->pos_x, data->pos_y);
+	}
+	data->pos_x = new_x * SPRITE_SIZE;
+	data->pos_y = new_y * SPRITE_SIZE;
+	mlx_put_image_to_window(data->mlx, data->win, data->player_img,
+		data->pos_x, data->pos_y);
+	if (!is_exit)
+		data->map[new_y][new_x] = 'P';
+	on_exit = is_exit;
+	data->moves++;
+	ft_printf("Moves: %d\n", data->moves);
+}
+
 void	move_player(t_data *data, int dx, int dy)
 {
 	int	new_x;
@@ -34,16 +69,13 @@ void	move_player(t_data *data, int dx, int dy)
 		if (data->map[new_y][new_x] == 'E')
 		{
 			handle_exit(data);
+			if (data->collected != data->coin)
+				update_player_pos(data, new_x, new_y);
 			return ;
 		}
 		if (data->map[new_y][new_x] == 'C')
 			data->collected++;
-		data->map[data->pos_y / SPRITE_SIZE][data->pos_x / SPRITE_SIZE] = '0';
-		data->map[new_y][new_x] = 'P';
-		data->pos_x = new_x * SPRITE_SIZE;
-		data->pos_y = new_y * SPRITE_SIZE;
-		data->moves++;
-		ft_printf("Moves: %d\n", data->moves);
+		update_player_pos(data, new_x, new_y);
 	}
 }
 
@@ -59,27 +91,10 @@ int	handle_keypress(int keycode, t_data *data)
 		move_player(data, 1, 0);
 	if (keycode == KEY_ESC)
 		close_window(data);
-	render(data);
-	return (0);
-}
-
-void	count_collectibles(t_data *data)
-{
-	int	x;
-	int	y;	
-
-	data->coin = 0;
-	data->collected = 0;
-	y = 0;
-	while (y < data->map_height)
+	if (data->collected == data->coin)
 	{
-		x = 0;
-		while (x < data->map_width)
-		{
-			if (data->map[y][x] == 'C')
-				data->coin++;
-			x++;
-		}
-		y++;
+		mlx_put_image_to_window(data->mlx, data->win, data->exit_img,
+			data->exit_x * SPRITE_SIZE, data->exit_y * SPRITE_SIZE);
 	}
+	return (0);
 }

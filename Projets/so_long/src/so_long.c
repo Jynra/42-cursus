@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:59:29 by ellucas           #+#    #+#             */
-/*   Updated: 2025/02/04 15:10:35 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/18 12:54:10 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ int	main(int ac, char **av)
 
 	(void) ac;
 	data.moves = 0;
-	if (ac > 2)
-		err("ERROR : Too much parameters\n");
+	if (ac != 2)
+		err("ERROR : Syntax must be -> ./so_long 'map_file.ber'\n");
 	check_filetype(av[1]);
 	if (!read_map(av[1], &data))
 	{
-		ft_printf("Error : Cannot read map file\n");
+		ft_printf("Error : Cannot read this map file\n");
 		return (1);
 	}
 	if (data.map)
-		ft_printf("Allocation de la map reussi\n");
+		ft_printf("Map allocation sucess\n");
 	else
-		err("Allocation de la map echoue\n");
+		err("Map allocation failed\n");
 	init_mlx(&data);
 	init_textures(&data);
 	render(&data);
