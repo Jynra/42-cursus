@@ -6,7 +6,7 @@
 #    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 14:44:44 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/24 15:59:30 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/24 16:02:16 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,5 @@ fclean: clean
 		make -c $(LIBFT_DIR) fclean
 		rm -f $(NAME)
 re: fclean all
+
 .PHONY: all clean fclean re
