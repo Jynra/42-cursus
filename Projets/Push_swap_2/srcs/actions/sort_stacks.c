@@ -6,11 +6,11 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:21:17 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/24 14:43:35 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:52:18 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	current_index(t_stack_node *stack)
 {

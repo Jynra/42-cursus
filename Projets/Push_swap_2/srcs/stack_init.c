@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:37:14 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/14 14:56:06 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/25 12:18:27 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static long	ft_atol(const char *s)
 	return (result * sign);
 }
 
-static void append_node(t_stack_node **stack, int n)
+static void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;

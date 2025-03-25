@@ -6,7 +6,7 @@
 #    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 14:44:44 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/24 16:02:16 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/25 12:22:29 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,30 @@ ACTIONS_DIR = $(wildcard $(SRC_DIR)actions/*.c) #wildcard permet de trouver les 
 PUSH_SWAP_DIR = $(wildcard $(SRC_DIR)*.c)
 
 SRCS = $(ACTIONS_DIR) $(PUSH_SWAP_DIR)
-OBJ = $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+OBJS = $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
+all: $(NAME)
 
+$(OBJ_DIR):
+		mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+		@mkdir -p $(@D)
+		$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+
+$(NAME): $(OBJ_DIR) $(OBJS)
+		make -c $(LIBFT_DIR)
+		$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
+
+$(LIBFT):
+		make -C $(LIBFT_DIR)
 
 clean:
-		make -c $(LIBFT_DIR) clean
+		make -C $(LIBFT_DIR) clean
 		rm -rf $(OBJ_DIR)
+
 fclean: clean
-		make -c $(LIBFT_DIR) fclean
+		make -C $(LIBFT_DIR) fclean
 		rm -f $(NAME)
 re: fclean all
 

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:02:50 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/14 12:07:35 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/25 13:09:17 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	sort_three(t_stack_node **a)
 {
