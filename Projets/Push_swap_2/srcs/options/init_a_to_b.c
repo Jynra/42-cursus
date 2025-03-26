@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:52:12 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/26 00:02:51 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/26 12:11:24 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	current_index(t_stack_node *stack)
 	{
 		stack->index = i;
 		if (i <= median)
-			stack->above_medium = true;
+			stack->above_median = true;
 		else
-			stack->above_medium = false;
+			stack->above_median = false;
 		stack = stack->next;
 		i++;
 	}
@@ -56,6 +56,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 			a->target_node = find_max(b);
 		else
 			a->target_node = target_node;
+		a = a->next;
 	}
 	
 }
@@ -70,9 +71,9 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 	while (a)
 	{
 		a->push_cost = a->index;
-		if (!(a->above_medium))
+		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
-		if (a->target_node->above_medium)
+		if (a->target_node->above_median)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - (a->target_node->index);
@@ -102,9 +103,14 @@ void	set_cheapest(t_stack_node *stack)
 
 void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
+//	ft_printf("Erreur init 1\n"); // DEBUG
 	current_index(a);
+//	ft_printf("Erreur init 2\n"); // DEBUG
 	current_index(b);
+//	ft_printf("Erreur init 3\n"); // DEBUG
 	set_target_a(a, b);
+//	ft_printf("Erreur init 4\n"); // DEBUG
 	cost_analysis_a(a, b);
+//	ft_printf("Erreur init 5\n"); // DEBUG
 	set_cheapest(a);
 }

@@ -6,13 +6,13 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:07:56 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/25 13:42:55 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/26 13:03:25 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	rotate(t_stack_node **stack)
+static void	rotate(t_stack_node **stack)
 {
 	t_stack_node	*last_node;
 
@@ -31,6 +31,7 @@ void	ra(t_stack_node **a, bool print)
 	rotate(a);
 	if (!print)
 		ft_printf("ra\n");
+	ft_printf("ra execute\n");
 }
 
 void	rb(t_stack_node **b, bool print)

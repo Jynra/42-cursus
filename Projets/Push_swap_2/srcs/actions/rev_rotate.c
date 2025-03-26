@@ -6,16 +6,18 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:40:39 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/25 13:53:57 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/26 12:52:37 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	rev_rotate(t_stack_node **stack)
+static void	rev_rotate(t_stack_node **stack)
 {
 	t_stack_node	*last_node;
 
+	if (!*stack || !(*stack)->next)
+		return ;
 	last_node = find_last(*stack);
 	last_node->prev->next = NULL;
 	last_node->next = *stack;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 23:52:18 by jynra             #+#    #+#             */
-/*   Updated: 2025/03/26 00:02:54 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/26 12:18:20 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void set_target_b(t_stack_node *a, t_stack_node *b)
 
 	while (b)
 	{
-		best_match_index = LONG_MIN;
+		best_match_index = LONG_MAX;
 		current_a = a;
 		while (current_a)
 		{
@@ -31,10 +31,11 @@ static void set_target_b(t_stack_node *a, t_stack_node *b)
 			}
 			current_a = current_a->next;
 		}
-		if (best_match_index == LONG_MIN)
-			b->target_node = find_max(a);
+		if (best_match_index == LONG_MAX)
+			b->target_node = find_min(a);
 		else
 			b->target_node = target_node;
+		b = b->next;
 	}
 	
 }

@@ -6,13 +6,13 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:00:14 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/25 15:19:31 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/26 12:52:50 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void	swap(t_stack_node **first)
+static void	swap(t_stack_node **first)
 {
 	if (!*first || !(*first)->next)
 		return ;

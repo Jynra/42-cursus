@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jynra <jynra@student.42.fr>                +#+  +:+       +#+         #
+#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 14:44:44 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/26 01:25:37 by jynra            ###   ########.fr        #
+#    Updated: 2025/03/26 13:19:13 by ellucas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 SRC_DIR = srcs/
 OBJ_DIR = obj/
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 CC = gcc
 

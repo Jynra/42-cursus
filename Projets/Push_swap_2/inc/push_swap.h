@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:14:16 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/26 01:14:42 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/26 12:52:32 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_stack_node
 	int					nbr;
 	int					index;
 	int					push_cost;
-	bool				above_medium;
+	bool				above_median;
 	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
@@ -67,19 +67,19 @@ void			pa(t_stack_node **a, t_stack_node **b, bool print);
 void			pb(t_stack_node **b, t_stack_node **a, bool print);
 
 /* rotate */
-void			rotate(t_stack_node **stack);
+//void			rotate(t_stack_node **stack);
 void			ra(t_stack_node **a, bool print);
 void			rb(t_stack_node **a, bool print);
 void			rr(t_stack_node **a, t_stack_node **b, bool print);
 
 /* rev_rotate */
-void			rev_rotate(t_stack_node **stack);
+//void			rev_rotate(t_stack_node **stack);
 void			rra(t_stack_node **a, bool print);
 void			rrb(t_stack_node **b, bool print);
 void			rrr(t_stack_node **a, t_stack_node **b, bool print);
 
 /* swap */
-void			swap(t_stack_node **first);
+//void			swap(t_stack_node **first);
 void			sa(t_stack_node **a, bool print);
 void			sb(t_stack_node **b, bool print);
 void			ss(t_stack_node **a, t_stack_node **b, bool print);
@@ -89,5 +89,8 @@ int				err_syntax(char *str);
 int				err_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_err(t_stack_node **a);
+
+/* split */
+char **split(char *s, char c);
 
 #endif
