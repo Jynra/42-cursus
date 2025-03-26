@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 15:21:40 by jynra             #+#    #+#             */
-/*   Updated: 2025/03/25 11:36:23 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/26 01:14:18 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int err_syntaxe(char *str)
+int err_syntax(char *str)
 {
     if (!(*str == '+' || *str == '-' || (*str >= '0' && *str <= '9')))
         return (1);
@@ -39,7 +39,7 @@ int err_duplicate(t_stack_node *a, int n)
     return (0);
 }
 
-void    free__stack(t_stack_node **stack)
+void    free_stack(t_stack_node **stack)
 {
     t_stack_node    *tmp;
     t_stack_node    *current;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:37:14 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/25 12:18:27 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/26 01:16:53 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,48 @@ void	init_stack_a(t_stack_node **a, char **av)
 	i = 0;
 	while (av[i])
 	{
-		if (error_syntax(av[i]))
-			free_errors(a);
+		if (err_syntax(av[i]))
+			free_err(a);
 		n = ft_atol(av[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
-		if (error_duplicate(*a, (int)n))
-			free_errors(a);
+			free_err(a);
+		if (err_duplicate(*a, (int)n))
+			free_err(a);
 		append_node(a, (int)n);
 		i++;
+	}
+}
+
+t_stack_node	*get_cheapest(t_stack_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
+{
+	while (*stack != top_node)
+	{
+		if (stack_name == 'a')
+		{
+			if (top_node->above_medium)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_medium)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}
 	}
 }

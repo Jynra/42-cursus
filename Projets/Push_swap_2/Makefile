@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
+#    By: jynra <jynra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 14:44:44 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/25 12:22:29 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/26 01:25:37 by jynra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
+OPTIONS_DIR = $(wildcard $(SRC_DIR)options/*.c)
+
 ACTIONS_DIR = $(wildcard $(SRC_DIR)actions/*.c) #wildcard permet de trouver les fichier source in DIR
 
 PUSH_SWAP_DIR = $(wildcard $(SRC_DIR)*.c)
 
-SRCS = $(ACTIONS_DIR) $(PUSH_SWAP_DIR)
+SRCS = $(OPTIONS_DIR) $(ACTIONS_DIR) $(PUSH_SWAP_DIR)
 OBJS = $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 all: $(NAME)
@@ -40,11 +42,14 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 		$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-		make -c $(LIBFT_DIR)
+		make -C $(LIBFT_DIR)
 		$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 $(LIBFT):
 		make -C $(LIBFT_DIR)
+
+#wasm: 
+#	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc $(SRCS) -o $(NAME).wasm
 
 clean:
 		make -C $(LIBFT_DIR) clean

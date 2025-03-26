@@ -6,7 +6,7 @@
 /*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:20:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/14 12:07:33 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/26 01:13:19 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 		else if (stack_len(a) == 3)
 			sort_three(&a);
 		else
-			sort_stack(&a, &b);
+			sort_stacks(&a, &b);
 	}
 	free_stack(&a);
 	return (0);
