@@ -844,6 +844,9 @@ ra
             // Initialize stacks
             stackA = [...numbers];
             stackB = [];
+
+            // Ajuster la vitesse maximale en fonction du nombre de valeurs
+            adjustMaxSpeedBasedOnStackSize();
             
             // Parse operations
             operations = operationsStr ? operationsStr.split(/\s+|\n+/).filter(op => op.trim()) : [];
@@ -884,6 +887,9 @@ ra
                 const count = parseInt(countInput.value, 10) || 10;
                 generateRandomNumbers(count);
             }
+
+            // Ajuster la vitesse maximale en fonction du nombre de valeurs
+            adjustMaxSpeedBasedOnStackSize();
             
             // Reset current step
             currentStep = -1;
@@ -1455,6 +1461,29 @@ ra
             const b = bigint & 255;
             
             return { r, g, b };
+        }
+
+        // Ajuste la vitesse maximale en fonction du nombre de valeurs
+        function adjustMaxSpeedBasedOnStackSize() {
+            // Obtenir le nombre de valeurs initiales
+            const totalValues = stackA.length + stackB.length;
+            
+            if (totalValues <= 0) return; // Éviter les problèmes
+            
+            // Calculer la vitesse maximale selon votre formule spécifique
+            // Cette formule donne ~92 pour 50 valeurs et ~1515 pour 500 valeurs
+            const maxSpeed = Math.ceil(totalValues * 3.03);
+            
+            // Mettre à jour les attributs min et max du slider
+            speedSlider.max = maxSpeed;
+            
+            // Ajuster la vitesse actuelle à environ 1/4 de la vitesse max
+            const newSpeed = Math.ceil(maxSpeed * 0.25);
+            speedSlider.value = newSpeed;
+            config.animationSpeed = newSpeed;
+            speedValue.textContent = newSpeed;
+            
+            console.log(`Adjusted max speed to ${maxSpeed} ops/sec based on ${totalValues} values. Current speed: ${newSpeed} ops/sec`);
         }
         
         // Initialize the application
