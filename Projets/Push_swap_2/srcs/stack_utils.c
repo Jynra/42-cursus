@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:55:22 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/26 12:57:15 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:51:10 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_stack_node	*find_min(t_stack_node *stack)
 	if (!stack)
 		return (NULL);
 	min = LONG_MAX;
-	while (stack->next)
+	while (stack)
 	{
 		if (stack->nbr < min)
 		{
@@ -85,6 +85,5 @@ bool	stack_sorted(t_stack_node *stack)
 			return (false);
 		stack = stack->next;
 	}
-//	ft_printf("stack already sorted\n"); // DEBUG
 	return (true);
 }

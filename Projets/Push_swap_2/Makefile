@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+         #
+#    By: jynra <jynra@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 14:44:44 by ellucas           #+#    #+#              #
-#    Updated: 2025/03/26 13:19:13 by ellucas          ###   ########.fr        #
+#    Updated: 2025/03/26 23:19:33 by jynra            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = push_swap
 INC_DIR = inc/
 LIBFT_DIR = $(INC_DIR)libft/
 LIBFT = $(LIBFT_DIR)libft.a
+LIBFT_SRCS = $(wildcard $(LIBFT_DIR)*.c) $(wildcard $(LIBFT_DIR)printf/*.c) $(wildcard $(LIBFT_DIR)gnl/*.c)
 SRC_DIR = srcs/
 OBJ_DIR = obj/
 
@@ -48,8 +49,8 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 $(LIBFT):
 		make -C $(LIBFT_DIR)
 
-#wasm: 
-#	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc $(SRCS) -o $(NAME).wasm
+wasm: 
+	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc $(SRCS) $(LIBFT_SRCS) -I$(INC_DIR) -o $(NAME).wasm
 
 clean:
 		make -C $(LIBFT_DIR) clean

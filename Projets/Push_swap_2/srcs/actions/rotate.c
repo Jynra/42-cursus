@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:07:56 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/26 13:03:25 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/27 00:51:29 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ra(t_stack_node **a, bool print)
 	rotate(a);
 	if (!print)
 		ft_printf("ra\n");
-	ft_printf("ra execute\n");
 }
 
 void	rb(t_stack_node **b, bool print)
