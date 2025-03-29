@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_a_to_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:52:12 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/27 14:00:29 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/29 00:41:42 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	current_index(t_stack_node *stack)
 {
-	int i;
-	int median;
+	int	i;
+	int	median;
 
 	i = 0;
 	if (!stack)
@@ -58,7 +58,6 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 			a->target_node = target_node;
 		a = a->next;
 	}
-	
 }
 
 static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
@@ -83,7 +82,7 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 
 void	set_cheapest(t_stack_node *stack)
 {
-	long	cheapest_value;
+	long			cheapest_value;
 	t_stack_node	*cheapest_node;
 
 	if (!stack)
@@ -103,14 +102,9 @@ void	set_cheapest(t_stack_node *stack)
 
 void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
-//	ft_printf("Erreur init 1\n"); // DEBUG
 	current_index(a);
-//	ft_printf("Erreur init 2\n"); // DEBUG
 	current_index(b);
-//	ft_printf("Erreur init 3\n"); // DEBUG
 	set_target_a(a, b);
-//	ft_printf("Erreur init 4\n"); // DEBUG
 	cost_analysis_a(a, b);
-//	ft_printf("Erreur init 5\n"); // DEBUG
 	set_cheapest(a);
 }

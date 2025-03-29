@@ -6,7 +6,7 @@
 /*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:14:16 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/28 22:38:00 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/29 00:49:16 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_stack_node
 
 /* Init */
 void			init_stack_a(t_stack_node **a, char **av);
-void			prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name);
+void			prep_for_push(t_stack_node **stack,
+					t_stack_node *top_node, char stack_name);
 t_stack_node	*get_cheapest(t_stack_node *stack);
 
 /* Sort */
@@ -41,12 +42,13 @@ void			sort_three(t_stack_node **a);
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 
 /* sort_stack__utils (need check) */
-void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node);
-void	rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node);
-void	move_a_to_b(t_stack_node **a, t_stack_node **b);
-void	move_b_to_a(t_stack_node **a, t_stack_node **b);
-void	min_on_top(t_stack_node **a);
-
+void			rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest_node);
+void			rev_rotate_both(t_stack_node **a, t_stack_node **b,
+					t_stack_node *cheapest_node);
+void			move_a_to_b(t_stack_node **a, t_stack_node **b);
+void			move_b_to_a(t_stack_node **a, t_stack_node **b);
+void			min_on_top(t_stack_node **a);
 
 /* Utils */
 int				stack_len(t_stack_node *stack);
@@ -91,6 +93,6 @@ void			free_stack(t_stack_node **stack);
 void			free_err(t_stack_node **a);
 
 /* split */
-char **split(char *s, char c);
+char			**split(char *s, char c);
 
 #endif

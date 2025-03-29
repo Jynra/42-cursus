@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:21:17 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/27 13:44:56 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/29 00:45:23 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,4 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	}
 	current_index(*a);
 	min_on_top(a);
-	
 }

@@ -6,7 +6,7 @@
 /*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:02:50 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/27 01:48:23 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/29 00:46:05 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_three(t_stack_node **a)
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
 	{
-		ra(a,false);
+		ra(a, false);
 	}
 	else if ((*a)->next == biggest_node)
 	{

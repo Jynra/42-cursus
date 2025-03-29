@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:51:19 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/26 12:02:07 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/29 00:43:20 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	push(t_stack_node **dst, t_stack_node **src)
 {
-	t_stack_node *push_node;
+	t_stack_node	*push_node;
+
 	if (!*src)
 		return ;
 	push_node = *src;

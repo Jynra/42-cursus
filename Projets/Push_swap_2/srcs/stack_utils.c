@@ -6,7 +6,7 @@
 /*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:55:22 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/27 01:51:10 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/29 01:07:20 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	stack_len(t_stack_node *stack)
 {
 	int	count;
 
+	count = 0;
 	if (!stack)
 		return (0);
 	while (stack)
@@ -37,7 +38,7 @@ t_stack_node	*find_last(t_stack_node *stack)
 
 t_stack_node	*find_min(t_stack_node *stack)
 {
-	long	min;
+	long			min;
 	t_stack_node	*min_node;
 
 	if (!stack)
@@ -57,7 +58,7 @@ t_stack_node	*find_min(t_stack_node *stack)
 
 t_stack_node	*find_max(t_stack_node *stack)
 {
-	long	max;
+	long			max;
 	t_stack_node	*max_node;
 
 	if (!stack)

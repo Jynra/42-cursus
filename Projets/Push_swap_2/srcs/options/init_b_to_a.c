@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 23:52:18 by jynra             #+#    #+#             */
-/*   Updated: 2025/03/27 14:03:22 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/29 00:42:31 by jynra            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-static void set_target_b(t_stack_node *a, t_stack_node *b)
+static void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;
@@ -37,12 +37,11 @@ static void set_target_b(t_stack_node *a, t_stack_node *b)
 			b->target_node = target_node;
 		b = b->next;
 	}
-	
 }
 
-void    init_nodes_b(t_stack_node *a, t_stack_node *b)
+void	init_nodes_b(t_stack_node *a, t_stack_node *b)
 {
-    current_index(a);
-    current_index(b);
-    set_target_b(a, b);
+	current_index(a);
+	current_index(b);
+	set_target_b(a, b);
 }
