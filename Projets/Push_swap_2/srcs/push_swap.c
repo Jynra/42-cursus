@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jynra <jynra@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:20:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/29 01:03:25 by jynra            ###   ########.fr       */
+/*   Updated: 2025/03/29 14:30:51 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int ac, char **av)
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
 	else if (ac == 2)
-//		av = ft_split(av[1], ' ');
-		av = split(av[1], ' ');
+		av = ft_split(av[1], ' ');
+//		av = split(av[1], ' ');
 	init_stack_a(&a, av + 1);
 	if (!stack_sorted(a))
 	{
