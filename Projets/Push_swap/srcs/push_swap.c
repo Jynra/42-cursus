@@ -6,7 +6,7 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:20:10 by ellucas           #+#    #+#             */
-/*   Updated: 2025/03/29 14:30:51 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/03/30 15:59:40 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int ac, char **av)
 		return (1);
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
-//		av = split(av[1], ' ');
 	init_stack_a(&a, av + 1);
 	if (!stack_sorted(a))
 	{
