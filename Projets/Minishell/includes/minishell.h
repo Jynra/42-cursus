@@ -6,7 +6,14 @@
 /*   By: ellucas <ellucas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:41:33 by ellucas           #+#    #+#             */
-/*   Updated: 2025/04/02 16:41:34 by ellucas          ###   ########.fr       */
+/*   Updated: 2025/04/02 16:56:29 by ellucas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MINISHELL_H
+# define MINISHELL_H
+
+# include "libft/libft.h"
+
+
+#endif
